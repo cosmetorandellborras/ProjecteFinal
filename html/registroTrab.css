@@ -1,0 +1,81 @@
+
+body{
+    margin:0;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    height: 250px;
+    width: 610px;
+}
+
+a{
+    text-decoration:none;;
+    color: white;
+}
+
+.sec_datos{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 40px;
+    background-color: #17747a;
+    height: 700px;
+    width: 100%;
+}
+
+legend{
+    font-size: 45px;
+    color:white;
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=tel]  {
+    margin-top: 19px;
+    font-size: 25px;
+    height: 45px;   
+    width: 290px;   
+}
+
+
+
+button{
+    margin-top: 27px;
+    color:white;
+    text-align: center;
+    font-size: 25px;
+    height: 55px;
+    width: 180px;
+    background-color: #08a0ad;
+}
+button:hover{
+    background-color: #00444a;
+    transition-duration:0.3s;
+}
+
+
+
+
+.sec_foot{
+    display: flex;
+    justify-content:center;
+    margin-top: 40px;
+    font-size: 35px;
+    text-align: center;
+    height: 240px;
+    width:100%;
+}
+
+.sec_foot img{
+    height: 110px;
+    width: 110px;
+}

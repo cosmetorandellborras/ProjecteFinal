@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="registroCli.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Clientes</title>
+</head>
+<body>
+    <header>
+        <a href="home.html"><img src="p.jpg"></a>
+    </header>
+
+    <section class="sec_datos">
+            <legend>REGISTRAR DATOS</legend>
+            <input type="text" placeholder="Nombre" id="nombre" minlength="1" maxlength="30"/><br>
+
+            <input type="text" placeholder="Apellido" id="apellido"minlength="1" maxlength="30" /><br>
+
+            <input type="tel" placeholder="Telefono" id="telefono" minlength="9" maxlength="9"/><br>
+
+            <input type="email" placeholder="Correo" id="correo" maxlength="100"/><br>
+
+            <input type="password" placeholder="Contraseña" id="contraseña" minlength="4" maxlength="30"/><br>
+
+            <input type="text" placeholder="DNI" id="dni" minlength="9" maxlength="9"/><br>
+
+            <button value="Aceptar" onclick="enviar()">ACEPTAR</button>
+    </section>
+
+    <footer>
+        <section class="sec_foot">
+            <section>
+                <p>Contáctanos</p>
+                <img src="w.png">
+            </section>
+        </section>
+    </footer>
+
+    <script src="/registroCli.js"></script>
+</body>
+</html>
