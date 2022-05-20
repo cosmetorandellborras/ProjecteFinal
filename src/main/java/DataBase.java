@@ -454,11 +454,11 @@ public class DataBase {
 			DriverManager.registerDriver(new OracleDriver());
 			Connection con = DriverManager.getConnection(url,user,pass);
 			PreparedStatement st1 = con.prepareStatement("SELECT ID_TRABAJO FROM TRABAJO WHERE TIPO = ?");
-			st1.setString(1, anuncio.getTrabajo());
+			st1.setString(1, String.valueOf(anuncio.getTrabajo()));
 			ResultSet rs = st1.executeQuery();
 			id_trabajo = rs.getInt(1);
 			PreparedStatement st2 = con.prepareStatement("SELECT ID_DISPONIBILIDAD FROM DISPONIBILIDAD WHERE INTERVALO = ?");
-			st2.setString(1, anuncio.getDisponibilidad());
+			st2.setString(1, String.valueOf(anuncio.getDisponibilidad()));
 			rs = st2.executeQuery();
 			id_disponibilidad = rs.getInt(1);
 			PreparedStatement st3 = con.prepareStatement("SELECT ID_ZONA FROM ZONA WHERE NOMBRE = ?");
