@@ -1,0 +1,163 @@
+
+body{
+    margin:0;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    height: 250px;
+    width: 570px;
+}
+p {
+    margin-right: 10px;
+}
+a{
+    text-decoration:none;
+    color: white;
+}
+
+h1{
+    text-align: center;
+    font-size: 60px;
+    color:#07153a;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.sec_datos{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.mod_datos legend{
+    margin-top: 30px;
+    font-size: 30px;
+    color:white;
+}
+
+.mod_datos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+    background-color: #a7cccf;
+    border-top:solid 2px ;
+    border-left:solid 2px ;
+    height: 600px;
+    width: 18%;
+}
+
+.mod_datos input[type=text],
+.mod_datos input[type=password],
+.mod_datos input[type=email],
+.mod_datos input[type=tel]  {
+    margin-top: 15px;
+    font-size: 22px;
+    height: 40px;   
+    width: 280px;   
+}
+
+.datos_anuncio{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-top:solid 2px ;
+    border-left:solid 2px ;
+    height: 600px;
+    width: 82%;
+}
+
+.fil_anun legend{
+    margin-top: 30px;
+    font-size: 30px;
+    color:white;
+}
+
+.fil_anun {
+    font-size: 30px;
+    background-color: #529ca1;
+    height: 40%;
+}
+.fil_anun2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+.lista_trabajos{
+
+    background-color: #baf1f5;
+    height: 60%;
+}
+.lista_trabajos p{
+    margin-top: 30px;
+    font-size: 30px;
+    color:white;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 5px;
+    text-align: center;
+}
+input[type=text],
+input[type=password] {
+    margin-top: 15px;
+    font-size: 22px;
+    height: 38px;   
+    width: 280px;   
+}
+
+button{
+    margin-top: 12px;
+    color:white;
+    text-align: center;
+    font-size: 25px;
+    height: 40px;
+    width: 150px;
+    background-color: #006d77;
+}
+button:hover{
+    background-color: #00444a;
+    transition-duration:0.3s;
+}
+
+.sec_foot{
+    display: flex;
+    justify-content:space-between;
+    border-top: solid 3px ;
+}
+
+.sec_foot section{
+    font-size: 35px;
+    text-align: center;
+    height: 240px;
+    width:23%;
+}
+
+.form_admin{
+    font-size: 30px;
+    background-color: #cbf3f0;
+    padding:25px;
+    height:190px;
+    width: 20%;
+    border: 0px;
+}
+
+section .boton_reg{
+    color:white;
+    text-align: center;
+    font-size: 30px;
+    height:80px;
+    width: 35%;
+    background-color: #006d77;
+}
+
+.sec_foot img{
+    height: 110px;
+    width: 110px;
+}

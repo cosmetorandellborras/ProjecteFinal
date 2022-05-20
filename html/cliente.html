@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="cliente.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body onload="actualitzar()">
+    <header>
+        <a href="home.html"><img src="p.jpg"></a>
+    </header>
+
+    <h1>ÁREA CLIENTES</h1>
+
+    <section class="sec_datos">
+        <section class="mod_datos">
+            <legend>MODIFICAR DATOS</legend>
+            <input type="text" placeholder="Nombre" id="id_nombre"/><br>
+
+            <input type="text" placeholder="Apellido" id="id_apellido"/><br>
+
+            <input type="tel" placeholder="Telefono" id="id_telefono"/><br>
+
+            <input type="email" placeholder="Correo" id="id_correo"/><br>
+
+            <input type="password" placeholder="Contraseña" id="id_contraseña"/><br>
+
+            <input type="text" placeholder="DNI" id="id_dni"/><br>
+
+            <button value="Aceptar">ACEPTAR</button>
+        </section>
+
+        <section class="datos_anuncio">
+            <article class="fil_anun">
+                <legend>FILTRAR ANUNCIO</legend>
+                <div class="fil_anun2">
+                    <p>Trabajo: </p> 
+                    <div id="sel_trabajo"></div>
+                    <p>Zona: </p>   
+                    <div id="sel_zona"></div>
+                    <p>Disponibilidad: </p>
+                    <div id="sel_dispo"></div>
+                </div>
+                <button value="Filtrar" onclick="filtrar()">FILTRAR</button>
+            </article>
+            <article class="lista_trabajos">
+                <p></p>
+                <div id="tabla_trabajos">
+                </div>
+            </article>
+        </section>
+    </section>
+
+    <footer>
+        <section class="sec_foot">
+            <section>
+                <p>¿Quieres trabajar con nosotros?</p>
+                <button class="boton_reg" type="submit" value="Registrar"><a href="login.html">Registrate</a></button>
+            </section> 
+            <section>
+                <p>Contáctanos</p>
+                <img src="w.png">
+            </section> 
+            <article class="form_admin">
+                <legend>ÁREA PRIVADA</legend>
+    
+                <input type="text" placeholder="Usuario" id="user"/><br>
+    
+                <input type="password" placeholder="Contraseña" id="passw"/>
+    
+                <button type="submit" value="Enviar">Enviar</button>
+            </article>
+        </section>
+    </footer>
+    <script src="cliente.js"></script>
+</body>
+</html>

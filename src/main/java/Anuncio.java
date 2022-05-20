@@ -3,8 +3,8 @@ public class Anuncio {
 	private Integer id;
 	private String dniTrabajador;
 	private Zona zona;
-	private String trabajo;
-	private String disponibilidad;
+	private Trabajo trabajo;
+	private Disponibilidad disponibilidad;
 	private float precioHora;
 	
 	//Getters y setters
@@ -27,16 +27,16 @@ public class Anuncio {
 	public void setZona(Zona zona) {
 		this.zona = zona;
 	}
-	public String getTrabajo() {
+	public Trabajo getTrabajo() {
 		return trabajo;
 	}
-	public void setTrabajo(String trabajo) {
+	public void setTrabajo(Trabajo trabajo) {
 		this.trabajo = trabajo;
 	}
-	public String getDisponibilidad() {
+	public Disponibilidad getDisponibilidad() {
 		return disponibilidad;
 	}
-	public void setDisponibilidad(String disponibilidad) {
+	public void setDisponibilidad(Disponibilidad disponibilidad) {
 		this.disponibilidad = disponibilidad;
 	}
 	public float getPrecioHora() {
@@ -46,7 +46,7 @@ public class Anuncio {
 		this.precioHora = precioHora;
 	}
 	//Constructores
-	public Anuncio(String dniTrabajador, Zona zona, String trabajo, String disponibilidad,
+	public Anuncio(String dniTrabajador, Zona zona, Trabajo trabajo, Disponibilidad disponibilidad,
 			float precioHora) {
 		this.setId();
 		this.setDniTrabajador(dniTrabajador);

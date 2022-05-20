@@ -11,4 +11,9 @@ public class MyTask {
 		int num = nuevo.registrarUsuario();
 		return num;
 	}
+	public static void regAnuncio(String dniTrabajador, String zona, String trabajo, String disponibilidad,
+			float precioHora) {
+		Anuncio nuevo = new Anuncio(dniTrabajador,Zona.valueOf(zona),Trabajo.valueOf(trabajo),Disponibilidad.valueOf(disponibilidad),precioHora);
+		DataBase.insertarAnuncio(nuevo);
+	}
 }

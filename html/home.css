@@ -36,7 +36,7 @@ a{
 }
 
 
-form{
+.forms_usu{
     font-size: 30px;
     background-color: #cbf3f0;
     padding:25px;
@@ -45,8 +45,8 @@ form{
     border:solid 2px;
 }
 
-form input[type=text],
-form input[type=password] {
+.forms_usu input[type=text],
+.forms_usu input[type=password] {
     margin-top: 15px;
     font-size: 22px;
     height: 38px;   
@@ -99,7 +99,7 @@ button:hover{
     width:23%;
 }
 
-section form{
+.form_admin{
     font-size: 30px;
     background-color: #cbf3f0;
     padding:25px;

@@ -29,7 +29,6 @@ public class RegistroCli extends HttpServlet {
 		contraseña = request.getParameter("contraseña");
 		dni = request.getParameter("dni");
 		int num = MyTask.regCliente(nombre, apellido, Integer.parseInt(telefono), correo, contraseña, dni);
-		System.out.println(num);
 		response.addHeader("Access-Control-Allow-Origin","*");
 		response.getWriter().append(String.valueOf(num));
 	}

@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -119,6 +120,277 @@ public class DataBase {
 			e.printStackTrace();
 		}
 	}
+	public static String getZona() {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		String resultat = "<select id=\"zona\"><option value=\"todos\">Todos</option>";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			Statement st = con.createStatement();
+			String query = "SELECT DISTINCT NOMBRE FROM ZONA ORDER BY 1";
+			ResultSet rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				resultat = resultat + "<option value=\""+rs.getString(1)+"\">"+rs.getString(1)+"</option>";
+			}
+			resultat = resultat + "</select>";
+			rs.close();
+			st.close();
+			con.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+	public static String getDisponibilidad() {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		String resultat = "<select id=\"disponibilidad\"><option value=\"todos\">Todos</option>";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			Statement st = con.createStatement();
+			String query = "SELECT DISTINCT INTERVALO FROM DISPONIBILIDAD ORDER BY 1";
+			ResultSet rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				resultat = resultat + "<option value=\""+rs.getString(1)+"\">"+rs.getString(1)+"</option>";
+			}
+			resultat = resultat + "</select>";
+			rs.close();
+			st.close();
+			con.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+	public static String getTrabajo() {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		String resultat = "<select id=\"trabajo\"><option value=\"todos\">Todos</option>";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			Statement st = con.createStatement();
+			String query = "SELECT DISTINCT TIPO FROM TRABAJO ORDER BY 1";
+			ResultSet rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				resultat = resultat + "<option value=\""+rs.getString(1)+"\">"+rs.getString(1)+"</option>";
+			}
+			resultat = resultat + "</select>";
+			rs.close();
+			st.close();
+			con.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+	public static String filtrarAnuncio(String tipo, String zona, String dispo) {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		String query = "";
+		String resultado = "<table class=\"anuncios\">\n"
+				+ "        <tr><th>ID Anuncio</th><th>Tipo de trabajo</th><th>Zona</th><th>Trabajador</th><th>Disponibilidad</th><th>Precio hora</th><th>Valoración</th><th>Seleccionar</th></tr>";
+		try {
+			if (tipo.equals("todos") && zona.equals("todos") && dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('⭐',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'⭐') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
+						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
+						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
+						+ "join zona z1 on a1.id_zona=z1.ID_ZONA\n"
+						+ "join DISPONIBILIDAD d1 on a1.ID_DISPONIBILIDAD=d1.ID_DISPONIBILIDAD\n"
+						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
+						+ "order by puntuacion desc";
+			}
+			else if (!tipo.equals("todos") && !zona.equals("todos") && !dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('⭐',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'⭐') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
+						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
+						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
+						+ "join zona z1 on a1.id_zona=z1.ID_ZONA\n"
+						+ "join DISPONIBILIDAD d1 on a1.ID_DISPONIBILIDAD=d1.ID_DISPONIBILIDAD\n"
+						+ "where TR1.TIPO = '"+tipo+"' AND Z1.NOMBRE = '"+zona+"' AND D1.INTERVALO = '"+dispo+"'\n"
+						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
+						+ "order by puntuacion desc";
+			}
+			else if (tipo.equals("todos") && !zona.equals("todos") && !dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('⭐',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'⭐') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
+						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
+						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
+						+ "join zona z1 on a1.id_zona=z1.ID_ZONA\n"
+						+ "join DISPONIBILIDAD d1 on a1.ID_DISPONIBILIDAD=d1.ID_DISPONIBILIDAD\n"
+						+ "where Z1.NOMBRE = '"+zona+"' AND D1.INTERVALO = '"+dispo+"'\n"
+						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
+						+ "order by puntuacion desc";
+			}
+			else if (tipo.equals("todos") && zona.equals("todos") && !dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('⭐',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'⭐') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
+						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
+						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
+						+ "join zona z1 on a1.id_zona=z1.ID_ZONA\n"
+						+ "join DISPONIBILIDAD d1 on a1.ID_DISPONIBILIDAD=d1.ID_DISPONIBILIDAD\n"
+						+ "where D1.INTERVALO = '"+dispo+"'\n"
+						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
+						+ "order by puntuacion desc";
+			}
+			else if (!tipo.equals("todos") && !zona.equals("todos") && dispo.equals("todos")){
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('⭐',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'⭐') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
+						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
+						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
+						+ "join zona z1 on a1.id_zona=z1.ID_ZONA\n"
+						+ "join DISPONIBILIDAD d1 on a1.ID_DISPONIBILIDAD=d1.ID_DISPONIBILIDAD\n"
+						+ "where tr1.TIPO = '"+tipo+"' AND z1.NOMBRE = '"+zona+"'\n"
+						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
+						+ "order by puntuacion desc";
+			}
+			else if (!tipo.equals("todos") && zona.equals("todos") && dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('⭐',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'⭐') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
+						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
+						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
+						+ "join zona z1 on a1.id_zona=z1.ID_ZONA\n"
+						+ "join DISPONIBILIDAD d1 on a1.ID_DISPONIBILIDAD=d1.ID_DISPONIBILIDAD\n"
+						+ "where tr1.TIPO = '"+tipo+"'\n"
+						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
+						+ "order by puntuacion desc";
+			}
+			else if (!tipo.equals("todos") && zona.equals("todos") && !dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('⭐',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'⭐') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
+						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
+						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
+						+ "join zona z1 on a1.id_zona=z1.ID_ZONA\n"
+						+ "join DISPONIBILIDAD d1 on a1.ID_DISPONIBILIDAD=d1.ID_DISPONIBILIDAD\n"
+						+ "where tr1.TIPO = '"+tipo+"' AND d1.INTERVALO = '"+dispo+"'\n"
+						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
+						+ "order by puntuacion desc";
+			}
+			else {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('⭐',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'⭐') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
+						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
+						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
+						+ "join zona z1 on a1.id_zona=z1.ID_ZONA\n"
+						+ "join DISPONIBILIDAD d1 on a1.ID_DISPONIBILIDAD=d1.ID_DISPONIBILIDAD\n"
+						+ "where z1.NOMBRE = '"+zona+"'\n"
+						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
+						+ "order by puntuacion desc";
+			}
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+				while(rs.next()) {
+					resultado = resultado+"<tr><td>"+String.valueOf(rs.getInt(1))+
+							"</td><td>"+rs.getString(2)+
+							"</td><td>"+rs.getString(3)+
+							"</td><td>"+rs.getString(4)+
+							"</td><td>"+rs.getString(5)+
+							"</td><td>"+String.valueOf(rs.getFloat(6))+
+							"</td><td>"+rs.getString(7)+
+							"</td><td><button onclick=\"solicitar("+String.valueOf(rs.getInt(1))+")\">Solicitar</button></td></tr>";
+				}
+				rs.close();
+				st.close();
+				con.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		resultado = resultado + "</table>";
+		return resultado;
+	}
 	/**
 	 * Metodo ejecutar query
 	 * @param query
@@ -169,5 +441,48 @@ public class DataBase {
 			e.printStackTrace();
 		}
 		return num;
+	}
+	public static void insertarAnuncio(Anuncio anuncio) {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		int id_trabajo;
+		int id_disponibilidad;
+		int id_zona;
+				
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			PreparedStatement st1 = con.prepareStatement("SELECT ID_TRABAJO FROM TRABAJO WHERE TIPO = ?");
+			st1.setString(1, anuncio.getTrabajo());
+			ResultSet rs = st1.executeQuery();
+			id_trabajo = rs.getInt(1);
+			PreparedStatement st2 = con.prepareStatement("SELECT ID_DISPONIBILIDAD FROM DISPONIBILIDAD WHERE INTERVALO = ?");
+			st2.setString(1, anuncio.getDisponibilidad());
+			rs = st2.executeQuery();
+			id_disponibilidad = rs.getInt(1);
+			PreparedStatement st3 = con.prepareStatement("SELECT ID_ZONA FROM ZONA WHERE NOMBRE = ?");
+			st3.setString(1, String.valueOf(anuncio.getZona()));
+			rs = st3.executeQuery();
+			id_zona = rs.getInt(1);
+			
+			PreparedStatement st4 = con.prepareStatement("INSERT INTO ANUNCIO VALUES (?,?,?,?,?,?)");
+			st4.setInt(1, anuncio.getId());
+			st4.setInt(2, id_trabajo);
+			st4.setString(3, anuncio.getDniTrabajador());
+			st4.setInt(4, id_disponibilidad);
+			st4.setInt(5, id_zona);
+			st4.setFloat(6, anuncio.getPrecioHora());
+			st4.executeUpdate();
+			st1.close();
+			st2.close();
+			st3.close();
+			st4.close();
+			rs.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("No se ha podido contactar con la base de datos");
+		}
 	}
 }

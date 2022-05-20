@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="trabajador.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
-<body>
+<body onload="actualitzar()">
     <header>
         <a href="home.html"><img src="p.jpg"></a>
     </header>
 
+
+    <h1>ÁREA COLABORADORES</h1>
+
     <section class="sec_datos">
-        <form class="mod_datos" action= "" method="">
+        <section class="mod_datos">
             <legend>MODIFICAR DATOS</legend>
             <input type="text" placeholder="Nombre" id="id_nombre"/><br>
 
@@ -30,20 +33,29 @@
             <input type="number" placeholder="Edad" id="id_edad"/><br>
 
             <button value="Aceptar">ACEPTAR</button>
-        </form>
+        </section>
 
-        <form class="anuncio" action= "" method="">
-            <legend>PUBLICAR ANUNCIO</legend>
-            <input type="text" placeholder="Tipo Trabajo" id="id_trabajo"/>
-
-            <input type="text" placeholder="Zona" id="id_zona"/>
-
-            <input type="text" placeholder="Disponiblidad" id="id_dispo"/>
-
-            <input type="text" placeholder="Precio por hora" id="id_precio"/><br>
-
-            <button value="Publicar">PUBLICAR</button>
-        </form>
+        <section class="datos_anuncio">
+            <article class="pub_anun">
+                <legend>PUBLICAR ANUNCIO</legend>
+                <div class="pub_anun2">
+                    <p>Trabajo: </p> 
+                    <div id="sel_trabajo"></div>
+                    <p>Zona: </p>   
+                    <div id="sel_zona"></div>
+                    <p>Disponibilidad: </p>
+                    <div id="sel_dispo"></div>
+                    <input type="text" placeholder="Precio por hora" id="id_precio"/><br>
+                </div>
+                <button value="Publicar" onclick="publicar()">PUBLICAR</button>
+            </article>
+            <article class="lista_trabajos">
+                <p>TRABAJOS PENDIENTES</p>
+                <div id="tabla_trabajos">
+                    <table></table>
+                </div>
+            </article>
+        </section>
     </section>
 
     <footer>
@@ -56,7 +68,7 @@
                 <p>Contáctanos</p>
                 <img src="w.png">
             </section> 
-            <form  action= "" method="">
+            <article class="form_admin">
                 <legend>ÁREA PRIVADA</legend>
     
                 <input type="text" placeholder="Usuario" id="user"/><br>
@@ -64,9 +76,9 @@
                 <input type="password" placeholder="Contraseña" id="passw"/>
     
                 <button type="submit" value="Enviar">Enviar</button>
-            </form>
+            </article>
         </section>
     </footer>
-    
+    <script src="trabajador.js"></script>
 </body>
 </html>
