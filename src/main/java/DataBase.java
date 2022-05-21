@@ -100,7 +100,11 @@ public class DataBase {
 			jCliente.setTelefono(rs.getInt("TELEFONO"));
 			jCliente.setCorreo(rs.getString("CORREO"));
 			jCliente.setContrasena(rs.getString("CONTRASEÃ‘A"));
+<<<<<<< Updated upstream
 
+=======
+			
+>>>>>>> Stashed changes
 			rs.close();
 			st.close();
 			con.close();
@@ -215,12 +219,26 @@ public class DataBase {
 				+ "        <tr><th>ID Anuncio</th><th>Tipo de trabajo</th><th>Zona</th><th>Trabajador</th><th>Disponibilidad</th><th>Precio hora</th><th>ValoraciÃ³n</th><th>Seleccionar</th></tr>";
 		try {
 			if (tipo.equals("todos") && zona.equals("todos") && dispo.equals("todos")) {
+<<<<<<< Updated upstream
 				query = "SELECT a1.ID_ANUNCIO,\n" + "tr1.TIPO tipo_anuncio,\n" + "z1.NOMBRE zona,\n"
 						+ "t1.NOMBRE trabajador,\n" + "d1.INTERVALO,\n" + "a1.PRECIO_HORA, \n"
 						+ "rpad('â­�',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
 						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
 						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
 						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n" + "FROM TRABAJADOR t1\n"
+=======
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('â­�',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+>>>>>>> Stashed changes
 						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
 						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
 						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
@@ -228,6 +246,7 @@ public class DataBase {
 						+ "join DISPONIBILIDAD d1 on a1.ID_DISPONIBILIDAD=d1.ID_DISPONIBILIDAD\n"
 						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
 						+ "order by puntuacion desc";
+<<<<<<< Updated upstream
 			} else if (!tipo.equals("todos") && !zona.equals("todos") && !dispo.equals("todos")) {
 				query = "SELECT a1.ID_ANUNCIO,\n" + "tr1.TIPO tipo_anuncio,\n" + "z1.NOMBRE zona,\n"
 						+ "t1.NOMBRE trabajador,\n" + "d1.INTERVALO,\n" + "a1.PRECIO_HORA, \n"
@@ -235,6 +254,21 @@ public class DataBase {
 						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
 						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
 						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n" + "FROM TRABAJADOR t1\n"
+=======
+			}
+			else if (!tipo.equals("todos") && !zona.equals("todos") && !dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('â­�',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+>>>>>>> Stashed changes
 						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
 						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
 						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
@@ -243,6 +277,7 @@ public class DataBase {
 						+ tipo + "' AND Z1.NOMBRE = '" + zona + "' AND D1.INTERVALO = '" + dispo + "'\n"
 						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
 						+ "order by puntuacion desc";
+<<<<<<< Updated upstream
 			} else if (tipo.equals("todos") && !zona.equals("todos") && !dispo.equals("todos")) {
 				query = "SELECT a1.ID_ANUNCIO,\n" + "tr1.TIPO tipo_anuncio,\n" + "z1.NOMBRE zona,\n"
 						+ "t1.NOMBRE trabajador,\n" + "d1.INTERVALO,\n" + "a1.PRECIO_HORA, \n"
@@ -250,6 +285,21 @@ public class DataBase {
 						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
 						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
 						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n" + "FROM TRABAJADOR t1\n"
+=======
+			}
+			else if (tipo.equals("todos") && !zona.equals("todos") && !dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('â­�',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+>>>>>>> Stashed changes
 						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
 						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
 						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
@@ -258,6 +308,7 @@ public class DataBase {
 						+ "where Z1.NOMBRE = '" + zona + "' AND D1.INTERVALO = '" + dispo + "'\n"
 						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
 						+ "order by puntuacion desc";
+<<<<<<< Updated upstream
 			} else if (tipo.equals("todos") && zona.equals("todos") && !dispo.equals("todos")) {
 				query = "SELECT a1.ID_ANUNCIO,\n" + "tr1.TIPO tipo_anuncio,\n" + "z1.NOMBRE zona,\n"
 						+ "t1.NOMBRE trabajador,\n" + "d1.INTERVALO,\n" + "a1.PRECIO_HORA, \n"
@@ -265,6 +316,21 @@ public class DataBase {
 						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
 						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
 						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n" + "FROM TRABAJADOR t1\n"
+=======
+			}
+			else if (tipo.equals("todos") && zona.equals("todos") && !dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('â­�',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+>>>>>>> Stashed changes
 						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
 						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
 						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
@@ -273,6 +339,7 @@ public class DataBase {
 						+ "where D1.INTERVALO = '" + dispo + "'\n"
 						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
 						+ "order by puntuacion desc";
+<<<<<<< Updated upstream
 			} else if (!tipo.equals("todos") && !zona.equals("todos") && dispo.equals("todos")) {
 				query = "SELECT a1.ID_ANUNCIO,\n" + "tr1.TIPO tipo_anuncio,\n" + "z1.NOMBRE zona,\n"
 						+ "t1.NOMBRE trabajador,\n" + "d1.INTERVALO,\n" + "a1.PRECIO_HORA, \n"
@@ -280,6 +347,21 @@ public class DataBase {
 						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
 						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
 						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n" + "FROM TRABAJADOR t1\n"
+=======
+			}
+			else if (!tipo.equals("todos") && !zona.equals("todos") && dispo.equals("todos")){
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('â­�',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+>>>>>>> Stashed changes
 						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
 						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
 						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
@@ -288,6 +370,7 @@ public class DataBase {
 						+ tipo + "' AND z1.NOMBRE = '" + zona + "'\n"
 						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
 						+ "order by puntuacion desc";
+<<<<<<< Updated upstream
 			} else if (!tipo.equals("todos") && zona.equals("todos") && dispo.equals("todos")) {
 				query = "SELECT a1.ID_ANUNCIO,\n" + "tr1.TIPO tipo_anuncio,\n" + "z1.NOMBRE zona,\n"
 						+ "t1.NOMBRE trabajador,\n" + "d1.INTERVALO,\n" + "a1.PRECIO_HORA, \n"
@@ -295,6 +378,21 @@ public class DataBase {
 						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
 						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
 						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n" + "FROM TRABAJADOR t1\n"
+=======
+			}
+			else if (!tipo.equals("todos") && zona.equals("todos") && dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('â­�',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+>>>>>>> Stashed changes
 						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
 						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
 						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
@@ -303,6 +401,7 @@ public class DataBase {
 						+ tipo + "'\n"
 						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
 						+ "order by puntuacion desc";
+<<<<<<< Updated upstream
 			} else if (!tipo.equals("todos") && zona.equals("todos") && !dispo.equals("todos")) {
 				query = "SELECT a1.ID_ANUNCIO,\n" + "tr1.TIPO tipo_anuncio,\n" + "z1.NOMBRE zona,\n"
 						+ "t1.NOMBRE trabajador,\n" + "d1.INTERVALO,\n" + "a1.PRECIO_HORA, \n"
@@ -310,6 +409,21 @@ public class DataBase {
 						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
 						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
 						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n" + "FROM TRABAJADOR t1\n"
+=======
+			}
+			else if (!tipo.equals("todos") && zona.equals("todos") && !dispo.equals("todos")) {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('â­�',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+>>>>>>> Stashed changes
 						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
 						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
 						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
@@ -318,6 +432,7 @@ public class DataBase {
 						+ tipo + "' AND d1.INTERVALO = '" + dispo + "'\n"
 						+ "group by a1.ID_ANUNCIO,tr1.TIPO,z1.NOMBRE,t1.NOMBRE ,d1.INTERVALO,a1.PRECIO_HORA\n"
 						+ "order by puntuacion desc";
+<<<<<<< Updated upstream
 			} else {
 				query = "SELECT a1.ID_ANUNCIO,\n" + "tr1.TIPO tipo_anuncio,\n" + "z1.NOMBRE zona,\n"
 						+ "t1.NOMBRE trabajador,\n" + "d1.INTERVALO,\n" + "a1.PRECIO_HORA, \n"
@@ -325,6 +440,21 @@ public class DataBase {
 						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
 						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
 						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n" + "FROM TRABAJADOR t1\n"
+=======
+			}
+			else {
+				query = "SELECT a1.ID_ANUNCIO,\n"
+						+ "tr1.TIPO tipo_anuncio,\n"
+						+ "z1.NOMBRE zona,\n"
+						+ "t1.NOMBRE trabajador,\n"
+						+ "d1.INTERVALO,\n"
+						+ "a1.PRECIO_HORA, \n"
+						+ "rpad('â­�',trunc(max((SELECT avg(c2.VALORACION) FROM TRABAJADOR t2\n"
+						+ "join ANUNCIO a2 on t2.id_trabajador=a2.id_trabajador\n"
+						+ "join CONTRATACION c2 on a2.id_anuncio=c2.id_anuncio\n"
+						+ "where a1.id_trabajador=a2.id_trabajador))),'â­�') puntuacion \n"
+						+ "FROM TRABAJADOR t1\n"
+>>>>>>> Stashed changes
 						+ "join ANUNCIO a1 on t1.id_trabajador=a1.id_trabajador\n"
 						+ "join CONTRATACION c1 on a1.id_anuncio=c1.id_anuncio\n"
 						+ "join TRABAJO tr1 on a1.id_trabajo=tr1.id_trabajo\n"
@@ -453,7 +583,11 @@ public class DataBase {
 			System.out.println("No se ha podido contactar con la base de datos");
 		}
 	}
+<<<<<<< Updated upstream
 
+=======
+	
+>>>>>>> Stashed changes
 	public static String mostrarServicioCli(String id) {
 		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
 		String user = "C##COSME";
@@ -462,6 +596,7 @@ public class DataBase {
 		String resultado = "<table class=\"servicios\">\n"
 				+ "        <tr><th>ID Anuncio</th><th>Tipo de trabajo</th><th>Zona</th><th>Trabajador</th><th>Disponibilidad</th><th>Precio hora</th><th>ValoraciÃ³n</th><th>Seleccionar</th></tr>";
 		try {
+<<<<<<< Updated upstream
 			query = "SELECT ID_ANUNCIO, ID_TRABAJADOR, FECHA_CONTRATACION, FECHA_INICIO, FECHA_FIN, INTERVALO_HORARIO, DIRECCION_CONTRATO, PRECIO, ESTADO FROM CONTRATACION C JOIN ANUNCIO A ON C.ID_ANUNCIO = A.ID_ANUNCIO WHERE C.ID_CLIENTE = '"
 					+ id + "'";
 
@@ -485,5 +620,19 @@ public class DataBase {
 			e.printStackTrace();
 		}
 		return resultado;
+=======
+			//query = "SELECT "
+			
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+				while(rs.next()) {}
+				
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}return resultado;
+>>>>>>> Stashed changes
 	}
 }

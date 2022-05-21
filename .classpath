@@ -6,12 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/cosmetorandell/Desktop/Activitats/Programaciò/apache-tomcat-10.0.18/lib/servlet-api.jar">
+	<classpathentry kind="lib" path="E:/Instaladores/apache-tomcat-10.0.21-windows-x64/apache-tomcat-10.0.21/lib/servlet-api.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/cosmetorandell/Desktop/Activitats/Programaciò/ojdbc8-21.5.0.0.jar">
+	<classpathentry kind="lib" path="C:/Users/krles/OneDrive/Escritorio/FP_DAM_1º/ojdbc8-21.5.0.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

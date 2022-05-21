@@ -56,3 +56,18 @@ function filtrar(){
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     http.send("trabajo="+document.getElementById("trabajo").value+"&&zona="+document.getElementById("zona").value+"&&dispo="+document.getElementById("disponibilidad").value);
 }
+
+function mostrarServicios(){
+    var http;
+    http = new XMLHttpRequest;
+
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            
+        }
+    }
+
+    http.open("POST", "http://localhost:7070/ProjecteFinal/MostrarServicioCli", true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    http.send("id"+localStorage.getItem("identificador"));
+}

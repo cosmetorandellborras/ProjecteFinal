@@ -68,7 +68,7 @@ public abstract class Usuario {
 		
 	}
 
-	public static boolean iniciarSesion(String correo, String contraseÃ±a){
+	public static boolean iniciarSesion(String correo, String contraseña){
 		boolean correcte = false;
 		return correcte;
 	}

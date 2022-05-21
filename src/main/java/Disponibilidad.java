@@ -1,4 +1,4 @@
 
 public enum Disponibilidad {
-	lunesmaÃ±ana, lunestarde, martesmaÃ±ana, martestarde,  miercolesmaÃ±ana, miercolestarde, juevesmaÃ±ana, juevestarde, viernesmaÃ±ana, viernestarde, sabadomaÃ±ana, sabadotarde, domingomaÃ±ana, domingotarde
+	lunesmañana, lunestarde, martesmañana, martestarde,  miercolesmañana, miercolestarde, juevesmañana, juevestarde, viernesmañana, viernestarde, sabadomañana, sabadotarde, domingomañana, domingotarde
 }
