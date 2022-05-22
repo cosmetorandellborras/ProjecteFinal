@@ -6,12 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 /**
- * Servlet implementation class MostrarServicioCli
+ * Servlet implementation class MostrarServicioTrab
  */
-@WebServlet("/MostrarServicioCli")
-public class MostrarServicioCli extends HttpServlet {
+@WebServlet("/MostrarServicioTrab")
+public class MostrarServicioTrab extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,11 +24,10 @@ public class MostrarServicioCli extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		String tabla = new String();
+		String tabla = DataBase.mostrarServicioTrab(id);
 		
-		tabla = DataBase.mostrarServicioCli(id);
 		response.addHeader("Access-Control-Allow-Origin","*");
 		response.getWriter().append(tabla);
 	}

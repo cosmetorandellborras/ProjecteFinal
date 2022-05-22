@@ -583,11 +583,6 @@ public class DataBase {
 			System.out.println("No se ha podido contactar con la base de datos");
 		}
 	}
-<<<<<<< Updated upstream
-
-=======
-	
->>>>>>> Stashed changes
 	public static String mostrarServicioCli(String id) {
 		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
 		String user = "C##COSME";
@@ -596,7 +591,6 @@ public class DataBase {
 		String resultado = "<table class=\"servicios\">\n"
 				+ "        <tr><th>ID Anuncio</th><th>Tipo de trabajo</th><th>Zona</th><th>Trabajador</th><th>Disponibilidad</th><th>Precio hora</th><th>ValoraciÃ³n</th><th>Seleccionar</th></tr>";
 		try {
-<<<<<<< Updated upstream
 			query = "SELECT ID_ANUNCIO, ID_TRABAJADOR, FECHA_CONTRATACION, FECHA_INICIO, FECHA_FIN, INTERVALO_HORARIO, DIRECCION_CONTRATO, PRECIO, ESTADO FROM CONTRATACION C JOIN ANUNCIO A ON C.ID_ANUNCIO = A.ID_ANUNCIO WHERE C.ID_CLIENTE = '"
 					+ id + "'";
 
@@ -604,13 +598,20 @@ public class DataBase {
 			Connection con = DriverManager.getConnection(url, user, pass);
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(query);
-			//Hacer aqui comprobacion de estado y si esta finalizado crear otro resultado con el button valorar?
+
 			while (rs.next()) {
-				resultado = resultado + "<tr><td>" + String.valueOf(rs.getInt(1)) + "</td><td>" + rs.getString(2)
+				if(rs.getString(9).equals("Finalizado")) {		
+					resultado = resultado + "<tr><td>" + String.valueOf(rs.getInt(1)) + "</td><td>" + rs.getString(2)
 						+ "</td><td>" + rs.getString(3) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(5)
 						+ "</td><td>" + String.valueOf(rs.getFloat(6)) + "</td><td>" + rs.getString(7)
 						+ "</td><td><button onclick=\"valorar(" + String.valueOf(rs.getInt(1))
 						+ ")\">Solicitar</button></td></tr>";
+				} else {
+					resultado = resultado + "<tr><td>" + String.valueOf(rs.getInt(1)) + "</td><td>" + rs.getString(2)
+					+ "</td><td>" + rs.getString(3) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(5)
+					+ "</td><td>" + String.valueOf(rs.getFloat(6)) + "</td><td>" + rs.getString(7)
+					+ "</td></tr>";
+				}
 			}
 			rs.close();
 			st.close();
@@ -620,19 +621,68 @@ public class DataBase {
 			e.printStackTrace();
 		}
 		return resultado;
-=======
-			//query = "SELECT "
-			
+	}
+	
+	public static String mostrarServicioTrab(String id) {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		String query = "";
+		String resultado = "<table class=\"servicios\">\n"
+				+ "        <tr><th>ID Anuncio</th><th>Tipo de trabajo</th><th>Zona</th><th>Trabajador</th><th>Disponibilidad</th><th>Precio hora</th><th>ValoraciÃ³n</th><th>Seleccionar</th></tr>";
+		try {
+			query = "SELECT ID_ANUNCIO, ID_CLIENTE, FECHA_CONTRATACION, FECHA_INICIO, FECHA_FIN, INTERVALO_HORARIO, DIRECCION_CONTRATO, PRECIO, ESTADO FROM CONTRATACION C JOIN ANUNCIO A ON C.ID_ANUNCIO = A.ID_ANUNCIO WHERE A.ID_TRABAJADOR = '"
+					+ id + "'";
+
 			DriverManager.registerDriver(new OracleDriver());
-			Connection con = DriverManager.getConnection(url,user,pass);
+			Connection con = DriverManager.getConnection(url, user, pass);
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(query);
-				while(rs.next()) {}
-				
-				
+
+			while (rs.next()) {
+				if(rs.getString(9).equals("Pendiente")) {		
+					resultado = resultado + "<tr><td>" + String.valueOf(rs.getInt(1)) + "</td><td>" + rs.getString(2)
+						+ "</td><td>" + rs.getString(3) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(5)
+						+ "</td><td>" + String.valueOf(rs.getFloat(6)) + "</td><td>" + rs.getString(7)
+						+ "</td><td><button onclick=\"actualizarServ(" + String.valueOf(rs.getInt(1))
+						+ "," + String.valueOf(rs.getString(2)) + ","+ String.valueOf(rs.getString(3))+")\">Aceptar</button></td></tr>";//Le metemos aqui el string aceptar como parametro?
+				} else {
+					resultado = resultado + "<tr><td>" + String.valueOf(rs.getInt(1)) + "</td><td>" + rs.getString(2)
+					+ "</td><td>" + rs.getString(3) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(5)
+					+ "</td><td>" + String.valueOf(rs.getFloat(6)) + "</td><td>" + rs.getString(7)
+					+ "</td></tr>";
+				}
+			}
+			rs.close();
+			st.close();
+			con.close();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}return resultado;
->>>>>>> Stashed changes
+		}
+		return resultado;
+	}
+	
+	public static void actualizarServ(String id1, String id2, String id3) {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		String query = "";
+		try {
+			query = "UPDATE CONTRATACION\r\n"
+					+ "SET ESTADO = \r\n"
+					+ "WHERE ID_ANUNCIO =  AND ID_CLIENTE =  AND FECHA_CONTRATACION=  ;\r\n"
+					+ "";
+
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url, user, pass);
+			Statement st = con.createStatement();
+			st.executeUpdate(query);
+			st.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
