@@ -27,8 +27,8 @@ v1.0.0 : Versión inicial del proyecto
 ### Html 
 
 1. Creación página de inicio
-2. Creación página del trabajador
-3. Creación página del cliente
+2. Creación página y regsitro del trabajador
+3. Creación página y registro del cliente
 
 
 
