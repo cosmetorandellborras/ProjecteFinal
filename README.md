@@ -1,23 +1,16 @@
 # PROYECTO DESARROLLO DE SOFTWARE
 
-## Control de Versiones 
-
-v1.0.0 : Versión inicial del proyecto
-
-
-
 ## Historial de Commits
 
 ### Master
-
 1. Versión inicial del proyecto
 2. Añadidas todas las clases
 3. Añadido archivo base de datos
 4. Añadido metodo publicar anuncio
 5. Correción enumeraciones clase base de datos
+6. Merge con ramas
 
 ### Database 
-
 1. Update DataBase.java
 2. Creación mostrar servicio
 3. Creación mostrar servicio II
@@ -25,11 +18,32 @@ v1.0.0 : Versión inicial del proyecto
 
 
 ### Html 
-
 1. Creación página de inicio
 2. Creación página y regsitro del trabajador
 3. Creación página y registro del cliente
 
+
+## Control de Versiones 
+
+### Master
+v1.0.0 : Versión inicial del proyecto
+v1.1.0 : Añadidas todas las clases
+v1.2.0 : Añadido archivo base de datos
+v1.3.0 : Añadido metodo publicar anuncio
+v1.4.0 : Correción enumeraciones clase base de datos
+v4.0.0 : Merge con ramas
+
+
+### Database 
+v2.0.0 : Update DataBase.java
+v2.1.0 : Creación mostrar servicio
+v2.2.0 : Creación mostrar servicio II
+v2.3.0 : Añadido mostrar y actualizar servicio
+
+### Html 
+v3.0.0 : Creación página de inicio
+v3.1.0 : Creación página y regsitro del trabajador
+v3.2.0 : Creación página y registro del cliente
 
 
 ## Diagrama de ramas 
