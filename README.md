@@ -27,22 +27,32 @@
 
 ### Master
 v1.0.0 : Versión inicial del proyecto
+
 v1.1.0 : Añadidas todas las clases
+
 v1.2.0 : Añadido archivo base de datos
+
 v1.3.0 : Añadido metodo publicar anuncio
+
 v1.4.0 : Correción enumeraciones clase base de datos
+
 v4.0.0 : Merge con ramas
 
 
 ### Database 
 v2.0.0 : Update DataBase.java
+
 v2.1.0 : Creación mostrar servicio
+
 v2.2.0 : Creación mostrar servicio II
+
 v2.3.0 : Añadido mostrar y actualizar servicio
 
 ### Html 
 v3.0.0 : Creación página de inicio
+
 v3.1.0 : Creación página y regsitro del trabajador
+
 v3.2.0 : Creación página y registro del cliente
 
 
