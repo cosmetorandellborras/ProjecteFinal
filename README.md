@@ -19,8 +19,8 @@
 
 ### Html 
 1. Creación página de inicio
-2. Creación página y regsitro del trabajador
-3. Creación página y registro del cliente
+2. Creación página y regsitro trabajador
+3. Creación página y registro cliente
 
 
 ## Control de Versiones 
@@ -51,9 +51,9 @@ v2.3.0 : Añadido mostrar y actualizar servicio
 ### Html 
 v3.0.0 : Creación página de inicio
 
-v3.1.0 : Creación página y regsitro del trabajador
+v3.1.0 : Creación página y regsitro trabajador
 
-v3.2.0 : Creación página y registro del cliente
+v3.2.0 : Creación página y registro cliente
 
 
 ## Diagrama de ramas 
