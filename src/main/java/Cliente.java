@@ -35,6 +35,9 @@ public class Cliente extends Usuario{
 	public void mostrarDatos() {
 		DataBase.mostrarDatosCliente(this);
 	}
-
+	public int actualizarDatos() {
+		int num = DataBase.actualizarDatosUsuario(this);
+		return num;
+	}
 	
 }

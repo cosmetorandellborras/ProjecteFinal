@@ -15,6 +15,9 @@ public class Anuncio {
 		int num = DataBase.buscarUltimoIdAnuncio();
 		this.id = num+1;
 	}
+	public void setIdRecuperarAnuncio(Integer id) {
+		this.id = id;
+	}
 	public String getDniTrabajador() {
 		return dniTrabajador;
 	}
@@ -55,6 +58,18 @@ public class Anuncio {
 		this.setDisponibilidad(disponibilidad);
 		this.setPrecioHora(precioHora);
 	}
-	
+	public Anuncio(Integer id) {
+		this.id = id;
+	}
+	//Metodo
+	public int publicarAnuncio(String trabajodb,String dispodb) {
+		int num = -1;
+		boolean trobat = DataBase.comprobarAnuncioDuplicado(this,trabajodb,dispodb);
+		if (!trobat) {
+			num = 0;
+			DataBase.insertarAnuncio(this,trabajodb,dispodb);
+		}
+		return num;
+	}
 	
 }

@@ -8,7 +8,121 @@ import java.sql.Statement;
 import oracle.jdbc.OracleDriver;
 
 public class DataBase {
-	
+	public static Cliente getCliente(String dni) {
+		Cliente cliente = new Cliente();
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			PreparedStatement st = con.prepareStatement("SELECT NOMBRE, APELLIDO, TELEFONO, CORREO, CONTRASENA FROM CLIENTE WHERE ID_CLIENTE = ?");
+			st.setString(1, dni);
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				cliente.setNombre(rs.getString(1));;
+				cliente.setApellido(rs.getString(2));
+				cliente.setTelefono(rs.getInt(3));
+				cliente.setCorreo(rs.getString(4)); 
+				cliente.setContrasena(rs.getString(5));
+				cliente.setDni(dni);
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cliente;
+	}
+	public static Trabajador getTrabajador(String dni) {
+		Trabajador trabajador = new Trabajador();
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			PreparedStatement st = con.prepareStatement("SELECT NOMBRE, APELLIDO, EDAD, TELEFONO, CORREO, CONTRASENA FROM TRABAJADOR WHERE ID_TRABAJADOR = ?");
+			st.setString(1, dni);
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				trabajador.setNombre(rs.getString(1));
+				trabajador.setApellido(rs.getString(2));
+				trabajador.setEdad(rs.getInt(3));
+				trabajador.setTelefono(rs.getInt(4));
+				trabajador.setCorreo(rs.getString(5)); 
+				trabajador.setContrasena(rs.getString(6));
+				trabajador.setDni(dni);
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return trabajador;
+	}
+	public static Anuncio getAnuncio(String id) {
+		Anuncio anuncio = new Anuncio(Integer.valueOf(id));
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			PreparedStatement st = con.prepareStatement("select a.ID_TRABAJADOR,z.NOMBRE,t.TIPO,d.INTERVALO,a.PRECIO_HORA from ANUNCIO a\n"
+					+ "join zona z on a.id_zona=z.ID_ZONA\n"
+					+ "join TRABAJO t on a.id_trabajo=t.ID_TRABAJO\n"
+					+ "join DISPONIBILIDAD d on a.id_disponibilidad=d.ID_DISPONIBILIDAD WHERE A.ID_ANUNCIO = ?");
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				anuncio.setIdRecuperarAnuncio(Integer.parseInt(id));
+				anuncio.setDniTrabajador(rs.getString(1));
+				anuncio.setZona(Zona.valueOf(rs.getString(2).toLowerCase().replace(" ", "")));
+				anuncio.setTrabajo(Trabajo.valueOf(rs.getString(3).toLowerCase().replace(" ", "")));
+				anuncio.setDisponibilidad(Disponibilidad.valueOf(rs.getString(4).toLowerCase().replace(" ", "")));
+				anuncio.setPrecioHora(rs.getFloat(5));
+			}
+			rs.close();
+			st.close();
+			con.close();
+			return anuncio;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return anuncio;
+	}
+	public static int insertarContratacion (Contratacion contratacion) {
+		int insertado = 0;
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			
+			PreparedStatement st = con.prepareStatement("INSERT INTO CONTRATACION (ID_ANUNCIO,ID_CLIENTE,FECHA_CONTRATACION,FECHA_FIN,FECHA_INICIO,INTERVALO_HORARIO,DIRECCION_CONTRATO,ESTADO,PRECIO) VALUES (?,?,?,?,?,?,?,?,?)");
+			st.setInt(1, contratacion.getAnuncio().getId());
+			st.setString(2, contratacion.getDniCliente());
+			st.setDate(3, java.sql.Date.valueOf(contratacion.getFechaContrato()));
+			st.setDate(4, java.sql.Date.valueOf(contratacion.getFechaFin()));
+			st.setDate(5, java.sql.Date.valueOf(contratacion.getFechaInicio()));
+			st.setString(6, contratacion.getIntervaloHoras());
+			st.setString(7, contratacion.getDireccion());
+			st.setString(8, String.valueOf(contratacion.getEstado()));
+			st.setFloat(9, contratacion.getPrecio());
+			st.executeUpdate();
+			insertado = 1;
+			st.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("No se ha podido contactar con la base de datos");
+		}
+		return insertado;
+	}
 	public static boolean comprobarAltaUsuario (Usuario usuario) {
 		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
 		String user = "C##COSME";
@@ -103,28 +217,61 @@ public class DataBase {
 		}
 		return texto;
 	}
-	public static void actualizarCliente(Cliente cliente,String nombre, String apellido, Integer telefono, String correo, String contrasena) {
+	public static int actualizarDatosUsuario(Usuario usuario) {
 		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
 		String user = "C##COSME";
 		String pass = "1234";
-		String query = "UPDATE CLIENTE SET NOMBRE = '"+nombre+"', APELLIDO = '"+apellido+"', TELEFONO = "+telefono+",CORREO = '"+correo+"', CONTRASENA = '"+contrasena+"' WHERE CLIENT_ID = '"+cliente.getDni()+"'";
+		String query = "";
+		int updated = 0;
+		if (usuario instanceof Cliente) {
+			query = "UPDATE CLIENTE SET NOMBRE = '"+usuario.getNombre()+"', APELLIDO = '"+usuario.getApellido()+"', TELEFONO = "+usuario.getTelefono()+",CORREO = '"+usuario.getCorreo()+"', CONTRASENA = '"+usuario.getContrasena()+"' WHERE ID_CLIENTE = '"+usuario.getDni()+"'";
+		}
+		else if (usuario instanceof Trabajador) {
+			query = "UPDATE TRABAJADOR SET NOMBRE = '"+usuario.getNombre()+"', APELLIDO = '"+usuario.getApellido()+"', TELEFONO = "+usuario.getTelefono()+",CORREO = '"+usuario.getCorreo()+"', CONTRASENA = '"+usuario.getContrasena()+"', EDAD = "+((Trabajador) usuario).getEdad()+" WHERE ID_TRABAJADOR = '"+usuario.getDni()+"'";
+		}
 		
 		try {
 			DriverManager.registerDriver(new OracleDriver());
 			Connection con = DriverManager.getConnection(url,user,pass);
 			Statement st = con.createStatement();
 			st.executeUpdate(query);
+			updated = 1;
 			st.close();
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return updated;
 	}
 	public static String getZona() {
 		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
 		String user = "C##COSME";
 		String pass = "1234";
 		String resultat = "<select id=\"zona\"><option value=\"todos\">Todos</option>";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			Statement st = con.createStatement();
+			String query = "SELECT DISTINCT NOMBRE FROM ZONA ORDER BY 1";
+			ResultSet rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				resultat = resultat + "<option value=\""+rs.getString(1)+"\">"+rs.getString(1)+"</option>";
+			}
+			resultat = resultat + "</select>";
+			rs.close();
+			st.close();
+			con.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+	public static String getZonaPublicar() {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		String resultat = "<select id=\"zona\">";
 		try {
 			DriverManager.registerDriver(new OracleDriver());
 			Connection con = DriverManager.getConnection(url,user,pass);
@@ -168,11 +315,59 @@ public class DataBase {
 		}
 		return resultat;
 	}
+	public static String getDisponibilidadPublicar() {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		String resultat = "<select id=\"disponibilidad\">";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			Statement st = con.createStatement();
+			String query = "SELECT DISTINCT INTERVALO FROM DISPONIBILIDAD ORDER BY 1";
+			ResultSet rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				resultat = resultat + "<option value=\""+rs.getString(1)+"\">"+rs.getString(1)+"</option>";
+			}
+			resultat = resultat + "</select>";
+			rs.close();
+			st.close();
+			con.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultat;
+	}
 	public static String getTrabajo() {
 		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
 		String user = "C##COSME";
 		String pass = "1234";
 		String resultat = "<select id=\"trabajo\"><option value=\"todos\">Todos</option>";
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			Statement st = con.createStatement();
+			String query = "SELECT DISTINCT TIPO FROM TRABAJO ORDER BY 1";
+			ResultSet rs = st.executeQuery(query);
+			
+			while(rs.next()) {
+				resultat = resultat + "<option value=\""+rs.getString(1)+"\">"+rs.getString(1)+"</option>";
+			}
+			resultat = resultat + "</select>";
+			rs.close();
+			st.close();
+			con.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+	public static String getTrabajoPublicar() {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		String resultat = "<select id=\"trabajo\">";
 		try {
 			DriverManager.registerDriver(new OracleDriver());
 			Connection con = DriverManager.getConnection(url,user,pass);
@@ -442,29 +637,94 @@ public class DataBase {
 		}
 		return num;
 	}
-	public static void insertarAnuncio(Anuncio anuncio) {
+	public static boolean comprobarAnuncioDuplicado(Anuncio anuncio, String tipo, String dispo) {
 		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
 		String user = "C##COSME";
 		String pass = "1234";
-		int id_trabajo;
-		int id_disponibilidad;
-		int id_zona;
-				
+		int id_trabajo = -1;
+		int id_disponibilidad = -1;
+		int id_zona = -1;	
+		boolean trobat = true;
 		try {
 			DriverManager.registerDriver(new OracleDriver());
-			Connection con = DriverManager.getConnection(url,user,pass);
+			Connection con = DriverManager.getConnection(url, user, pass);
 			PreparedStatement st1 = con.prepareStatement("SELECT ID_TRABAJO FROM TRABAJO WHERE TIPO = ?");
-			st1.setString(1, String.valueOf(anuncio.getTrabajo()));
-			ResultSet rs = st1.executeQuery();
-			id_trabajo = rs.getInt(1);
+			st1.setString(1, tipo);
+			ResultSet rs1 = st1.executeQuery();
+			while (rs1.next()) {
+				id_trabajo = rs1.getInt(1);
+			}
 			PreparedStatement st2 = con.prepareStatement("SELECT ID_DISPONIBILIDAD FROM DISPONIBILIDAD WHERE INTERVALO = ?");
-			st2.setString(1, String.valueOf(anuncio.getDisponibilidad()));
-			rs = st2.executeQuery();
-			id_disponibilidad = rs.getInt(1);
+			st2.setString(1, dispo);
+			ResultSet rs2 = st2.executeQuery();
+			while (rs2.next()) {
+				id_disponibilidad = rs2.getInt(1);
+			}
 			PreparedStatement st3 = con.prepareStatement("SELECT ID_ZONA FROM ZONA WHERE NOMBRE = ?");
 			st3.setString(1, String.valueOf(anuncio.getZona()));
-			rs = st3.executeQuery();
-			id_zona = rs.getInt(1);
+			ResultSet rs3 = st3.executeQuery();
+			while(rs3.next()) {
+				id_zona = rs3.getInt(1);
+			}
+			PreparedStatement st4 = con.prepareStatement("SELECT * FROM ANUNCIO WHERE ID_TRABAJO = ? AND ID_TRABAJADOR = ? AND ID_DISPONIBILIDAD = ? AND ID_ZONA = ? AND PRECIO_HORA = ?");
+			st4.setInt(1, id_trabajo);
+			st4.setString(2, anuncio.getDniTrabajador());
+			st4.setInt(3, id_disponibilidad);
+			st4.setInt(4, id_zona);
+			st4.setFloat(5, anuncio.getPrecioHora());
+			ResultSet rs4 = st4.executeQuery();
+			if (rs4.next() == false) {
+				trobat = false;	
+				
+			}
+			con.close();
+			st1.close();
+			st2.close();
+			st3.close();
+			st4.close();
+			rs1.close();
+			rs2.close();
+			rs3.close();
+			rs4.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("No se ha podido contactar con la base de datos");
+		}
+		return trobat;
+	}
+	public static int insertarAnuncio(Anuncio anuncio,String tipo,String dispo) {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		int id_trabajo = -1;
+		int id_disponibilidad = -1;
+		int id_zona = -1;	
+		int insertado = 1;
+		try {
+			
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url,user,pass);
+			
+			PreparedStatement st1 = con.prepareStatement("SELECT ID_TRABAJO FROM TRABAJO WHERE TIPO = ?");
+			st1.setString(1, tipo);
+			ResultSet rs = st1.executeQuery();
+			while (rs.next()) {
+				id_trabajo = rs.getInt(1);
+			}
+			
+			PreparedStatement st2 = con.prepareStatement("SELECT ID_DISPONIBILIDAD FROM DISPONIBILIDAD WHERE INTERVALO = ?");
+			st2.setString(1, dispo);
+			ResultSet rs1 = st2.executeQuery();
+			while (rs1.next()) {
+				id_disponibilidad = rs1.getInt(1);
+			}
+			
+			PreparedStatement st3 = con.prepareStatement("SELECT ID_ZONA FROM ZONA WHERE NOMBRE = ?");
+			st3.setString(1, String.valueOf(anuncio.getZona()));
+			ResultSet rs2 = st3.executeQuery();
+			while (rs2.next()) {
+				id_zona = rs2.getInt(1);
+			}
 			
 			PreparedStatement st4 = con.prepareStatement("INSERT INTO ANUNCIO VALUES (?,?,?,?,?,?)");
 			st4.setInt(1, anuncio.getId());
@@ -474,15 +734,79 @@ public class DataBase {
 			st4.setInt(5, id_zona);
 			st4.setFloat(6, anuncio.getPrecioHora());
 			st4.executeUpdate();
+			insertado = 0;
 			st1.close();
 			st2.close();
 			st3.close();
 			st4.close();
 			rs.close();
+			rs1.close();
+			rs2.close();
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("No se ha podido contactar con la base de datos");
 		}
+		return insertado;
+	}
+	public static int comprobarLoginCliente(String dni, String passCli) {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		int num = -1;
+		
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url, user, pass);
+			PreparedStatement st1 = con.prepareStatement("SELECT CONTRASENA FROM CLIENTE WHERE ID_CLIENTE =?");
+			st1.setString(1, dni);
+			ResultSet rs = st1.executeQuery();
+			
+			if (rs.next() == false) {
+				num = -1;	
+				
+			}
+			else {
+				if (rs.getString(1).equals(passCli)){
+					num = 1;
+				}
+				else {
+					num = 0;
+				}
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return num;
+	}
+	public static int comprobarLoginTrabajador(String dni, String passTra) {
+		String url = "jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain";
+		String user = "C##COSME";
+		String pass = "1234";
+		int num = -1;
+		
+		try {
+			DriverManager.registerDriver(new OracleDriver());
+			Connection con = DriverManager.getConnection(url, user, pass);
+			PreparedStatement st1 = con.prepareStatement("SELECT CONTRASENA FROM TRABAJADOR WHERE ID_TRABAJADOR =?");
+			st1.setString(1, dni);
+			ResultSet rs = st1.executeQuery();
+			
+			if (rs.next() == false) {
+				num = -1;	
+				
+			}
+			else {
+				if (rs.getString(1).equals(passTra)){
+					num = 1;
+				}
+				else {
+					num = 0;
+				}
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return num;
 	}
 }

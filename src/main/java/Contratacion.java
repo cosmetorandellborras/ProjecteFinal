@@ -1,14 +1,16 @@
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Contratacion {
 	//Atributos
 	private String dniCliente;
 	private Anuncio anuncio;
 	private String direccion;
-	private LocalDateTime fechaInicio;
+	private LocalDate fechaInicio;
+	private LocalDate fechaFin;
 	private String intervaloHoras;
-	private LocalDateTime fechaContrato;
+	private LocalDate fechaContrato;
 	private String comentario;
+	private float valoracion;
 	private Estado estado;
 	private float precio;
 	//Getters y setters
@@ -30,11 +32,17 @@ public class Contratacion {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public LocalDateTime getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(LocalDateTime fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
+	}
+	public LocalDate getFechaFin() {
+		return fechaFin;
+	}
+	public void setFechaFin(LocalDate fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 	public String getIntervaloHoras() {
 		return intervaloHoras;
@@ -42,10 +50,10 @@ public class Contratacion {
 	public void setIntervaloHoras(String intervaloHoras) {
 		this.intervaloHoras = intervaloHoras;
 	}
-	public LocalDateTime getFechaContrato() {
+	public LocalDate getFechaContrato() {
 		return fechaContrato;
 	}
-	public void setFechaContrato(LocalDateTime fechaContrato) {
+	public void setFechaContrato(LocalDate fechaContrato) {
 		this.fechaContrato = fechaContrato;
 	}
 	public String getComentario() {
@@ -66,18 +74,31 @@ public class Contratacion {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
+	public void setValoracion(float valoracion) {
+		this.valoracion = valoracion;
+	}
+	public float getValoracion() {
+		return valoracion;
+	}
 	//Constructor
-	public Contratacion(String dniCliente, Anuncio anuncio, String direccion, LocalDateTime fechaInicio,
-			String intervaloHoras, LocalDateTime fechaContrato, String comentario, Estado estado, float precio) {
-		this.dniCliente = dniCliente;
-		this.anuncio = anuncio;
-		this.direccion = direccion;
-		this.fechaInicio = fechaInicio;
-		this.intervaloHoras = intervaloHoras;
-		this.fechaContrato = fechaContrato;
-		this.comentario = comentario;
-		this.estado = estado;
-		this.precio = precio;
+	public Contratacion(String dniCliente, Anuncio anuncio, String direccion, LocalDate fechaInicio, LocalDate fechaFin,
+			String intervaloHoras, LocalDate fechaContrato, Estado estado, float precio) {
+		this.setDniCliente(dniCliente);
+		this.setAnuncio(anuncio);
+		this.setDireccion(direccion);
+		this.setFechaInicio(fechaInicio);
+		this.setFechaFin(fechaFin);
+		this.setIntervaloHoras(intervaloHoras);
+		this.setFechaContrato(fechaContrato);
+		this.setValoracion(0);
+		this.setComentario(null);
+		this.setEstado(estado);
+		this.setPrecio(precio);
+	}
+	//Métodos
+	public int inContrato() {
+		int num = DataBase.insertarContratacion(this);
+		return num;
 	}
 	
 	

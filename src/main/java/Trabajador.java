@@ -37,9 +37,9 @@ public class Trabajador extends Usuario{
 	public void mostrarDatos() {
 		
 	}
-	@Override
-	public void modificarDatos(String nombre, String apellido, Integer telefono, String correo, String contrasena, String dni, Integer edad) {
-		
+	public int actualizarDatos() {
+		int num = DataBase.actualizarDatosUsuario(this);
+		return num;
 	}
 
 	public void publicarAnuncio(String[] zona, String trabajo, String disponibilidad, Float precio_hora) {

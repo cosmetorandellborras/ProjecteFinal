@@ -1,4 +1,4 @@
 
 public enum Trabajo {
-	cuidador, canguro, limpieza, jardineria, repaso, paseadorperros, cocinero
+	cuidador, canguro, limpieza, jardinería, repaso, paseadordeperros, cocinero
 }
