@@ -1,6 +1,6 @@
 # PROYECTO DESARROLLO DE SOFTWARE
 
-## Documentación Web
+## Descripción Web
 La interfaz web de la aplicación se compone de 5 páginas :
 
 ### Página principal 
