@@ -19,7 +19,7 @@ de un trabajador o de un cliente.
 ### Página del Trabajador
 Una vez logeado el trabajador,accede a esta página, que contiene varias secciones con información personal y laboral de este.
 
-Por un lado, en el lado izquierdo, un formulario para modificar los datos personales.
+Por un lado un formulario para modificar los datos personales.
 
 Por otro lado, como parte central de la página, todo lo referente a los anuncios. En la parte superior, una sección que contiene la publicación de un 
 anuncio y en la parte inferior, las solicitudes pendientes de los servicios del trabajador.
@@ -27,9 +27,9 @@ anuncio y en la parte inferior, las solicitudes pendientes de los servicios del 
 Por último, un pie de página compuesto de información relevante de la empresa, como los datos de contacto, funcionalidades para registrar nuevos trabajadores y acceso al área privada.
 
 ### Página del Cliente
-Una vez logeado el cliente,accede a esta página, que contiene varias secciones, compuestas por información personal y de los anuncios a contratar.
+Una vez logeado el cliente,accede a esta página, que contiene varias secciones, compuestas por información personal e información de los anuncios a contratar.
 
-Por un lado, en el lado izquierdo, un formulario para modificar los datos personales del cliente.
+En el lado izquierdo, un formulario para modificar los datos personales del cliente.
 
 Por otro lado, como parte central de la página, todo lo referente a los anuncios. En la parte superior, una sección donde el cilente puede filtrar
 los anuncios en función de sus necesidades (como el tipo de trabajo, la zona o el precio del servicio) y en la parte inferior, el historial de 
