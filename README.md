@@ -1,5 +1,42 @@
 # PROYECTO DESARROLLO DE SOFTWARE
 
+## Documentación Web
+La interfaz web de la aplicación se compone de 5 páginas :
+
+### Página principal 
+La página principal de la aplicación contiene de una cabecera con el logo de la empresa.
+
+Seguidamente un navegador que da funcionalidad al apartado de acceso y registro.
+
+La parte central de la página web se centra en información publicitaria de la empresa, que en primer lugar se compone de una imagen general y posteriormente por un apartado de ventajas de los servicios que se ofrecen.
+
+Por último, un pie de página compuesto de información relevante de la empresa, como los datos de contacto, funcionalidades para registrar nuevos trabajadores y acceso al área privada.
+
+### Registro  
+Esta página contiene un formulario con los datos personales a rellenar por el usuario,que tendrá diferentes campos teniendo en cuenta si se trata de 
+de un trabajador o de un cliente.
+
+### Página del Trabajador
+Una vez logeado el trabajador,accede a esta página, que contiene varias secciones con información personal y laboral de este.
+
+Por un lado, en el lado izquierdo, un formulario para modificar los datos personales.
+
+Por otro lado, como parte central de la página, todo lo referente a los anuncios. En la parte superior, una sección que contiene la publicación de un 
+anuncio y en la parte inferior, las solicitudes pendientes de los servicios del trabajador.
+
+Por último, un pie de página compuesto de información relevante de la empresa, como los datos de contacto, funcionalidades para registrar nuevos trabajadores y acceso al área privada.
+
+### Página del Cliente
+Una vez logeado el cliente,accede a esta página, que contiene varias secciones, compuestas por información personal y de los anuncios a contratar.
+
+Por un lado, en el lado izquierdo, un formulario para modificar los datos personales del cliente.
+
+Por otro lado, como parte central de la página, todo lo referente a los anuncios. En la parte superior, una sección donde el cilente puede filtrar
+los anuncios en función de sus necesidades (como el tipo de trabajo, la zona o el precio del servicio) y en la parte inferior, el historial de 
+trabajos solicitados.
+
+Por último, un pie de página compuesto de información relevante de la empresa, como los datos de contacto, funcionalidades para registrar nuevos trabajadores y acceso al área privada.
+
 ## Historial de Commits
 
 ### Master
