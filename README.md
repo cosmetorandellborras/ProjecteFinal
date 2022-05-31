@@ -21,8 +21,8 @@ Una vez logeado el trabajador,accede a esta página, que contiene varias seccion
 
 Por un lado un formulario para modificar los datos personales.
 
-Por otro lado, como parte central de la página, todo lo referente a los anuncios. En la parte superior, una sección que contiene la publicación de un 
-anuncio y en la parte inferior, las solicitudes pendientes de los servicios del trabajador.
+Por otro lado, como parte central de la página, todo lo referente a los anuncios. En la parte superior, una sección que se corresponde a la publicación 
+de un anuncio mediante un formulario y en la parte inferior, las solicitudes pendientes de los servicios del trabajador.
 
 Por último, un pie de página compuesto de información relevante de la empresa, como los datos de contacto, funcionalidades para registrar nuevos trabajadores y acceso al área privada.
 
