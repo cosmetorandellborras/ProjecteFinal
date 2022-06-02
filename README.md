@@ -33,9 +33,15 @@ En el lado izquierdo, un formulario para modificar los datos personales del clie
 
 Por otro lado, como parte central de la página, todo lo referente a los anuncios. En la parte superior, una sección donde el cilente puede filtrar
 los anuncios en función de sus necesidades (como el tipo de trabajo, la zona o el precio del servicio) y por consiguiente solicitarlos,especificando
-el periodo y la franja horaria durante el cual desea el servicio. En la parte inferior, el historial de trabajos solicitados.
+el periodo y la franja horaria durante el cual desea el servicio. En la parte inferior, el historial de trabajos solicitados, donde podrá valorarlos.
 
 Por último, un pie de página compuesto de información relevante de la empresa, como los datos de contacto, funcionalidades para registrar nuevos trabajadores y acceso al área privada.
+
+La aplicación es adaptable para móviles en las páginas referentes a los usuarios (registro y página personal).
+
+Reparto del trabajo :
+* HTML y CSS : Juan Sánchez
+* JavaScript : Carlos Blanco y Cosme Torandell
 
 ## Historial de Commits
 
