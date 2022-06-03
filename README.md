@@ -37,7 +37,7 @@ el periodo y la franja horaria durante el cual desea el servicio. En la parte in
 
 Por último, un pie de página compuesto de información relevante de la empresa, como los datos de contacto, funcionalidades para registrar nuevos trabajadores y acceso al área privada.
 
-La aplicación es adaptable para móvil en las páginas referentes a los usuarios (registro y página personal).
+La aplicación es adaptable para móvil tanto en la página inicial como en las páginas de registro.
 
 Reparto del trabajo :
 * HTML y CSS : Juan Sánchez
