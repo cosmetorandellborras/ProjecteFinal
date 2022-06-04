@@ -14,7 +14,9 @@ public class ActualizarTrab extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet ActualizarTrab
+	 * Recibe los datos del trabajador y llama al método modificarDatosTrabajador
+	 * Envia como respuesta un numero que identificará si la operación se ha completado satisfactoriamente o no
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombre = request.getParameter("nombre");

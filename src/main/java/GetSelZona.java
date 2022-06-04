@@ -15,7 +15,8 @@ public class GetSelZona extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet GetSelZona
+	 * Envia un string con un select html con las distintas zonas
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultat = "";

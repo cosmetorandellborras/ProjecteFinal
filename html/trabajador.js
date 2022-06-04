@@ -2,7 +2,8 @@ function actualitzar(){
     listaTipoTrabajo();
     listaZona();
     listaDisponibilidad();
-    mostrarDatosTrabajador()
+    mostrarDatosTrabajador();
+    mostrarServicios();
 }
 function listaTipoTrabajo(){
     var http;
@@ -72,7 +73,6 @@ function mostrarDatosTrabajador(){
 
     http.onreadystatechange = function (){
         if (http.readyState == 4 && http.status == 200){
-            alert(http.responseText);
             var obj = JSON.parse(http.responseText);
             document.getElementById("id_nombre").value = obj.nombre;
             document.getElementById("id_apellido").value = obj.apellido;
@@ -109,4 +109,39 @@ function actualizarDatos(){
 function encPass(pass){
     let encrypted = CryptoJS.SHA256(pass);
     return encrypted;
+}
+function mostrarServicios(){
+    var http;
+    http = new XMLHttpRequest;
+
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            document.getElementById("tabla_trabajos").innerHTML = http.responseText;
+        }
+    }
+
+    http.open("POST", "http://localhost:7070/ProjecteFinal/MostrarServicioTrab", true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    http.send("id="+sessionStorage.getItem("identificador"));
+}
+
+function actualizarServ(id_contratacion, estado){
+    var http = new XMLHttpRequest;
+
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            var num = parseInt(http.responseText);
+            if (num == 1){
+                alert("Trabajo aceptado");
+            }
+            else if (num == -1) {
+                alert("Trabajo rechazado");
+            }
+            actualitzar();
+        }
+    }
+
+    http.open("POST", "http://localhost:7070/ProjecteFinal/ActualizarServ", true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    http.send("id="+id_contratacion+"&&estado="+estado);
 }

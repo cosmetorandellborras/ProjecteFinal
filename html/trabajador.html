@@ -10,14 +10,12 @@
 <body onload="actualitzar()">
     <header>
         <a href="home.html"><img src="p.jpg"></a>
+        <h1>ÁREA COLABORADORES</h1>
     </header>
-
-
-    <h1>ÁREA COLABORADORES</h1>
 
     <section class="sec_datos">
         <section class="mod_datos">
-            <legend>MODIFICAR DATOS</legend>
+            <h2>MODIFICAR DATOS</h2>
             <input type="text" placeholder="Nombre" id="id_nombre"/><br>
 
             <input type="text" placeholder="Apellido" id="id_apellido"/><br>
@@ -35,7 +33,7 @@
 
         <section class="datos_anuncio">
             <article class="pub_anun">
-                <legend>PUBLICAR ANUNCIO</legend>
+                <h2>PUBLICAR ANUNCIO</h2>
                 <div class="pub_anun2">
                     <p>Trabajo: </p> 
                     <div id="sel_trabajo"></div>
@@ -43,14 +41,13 @@
                     <div id="sel_zona"></div>
                     <p>Disponibilidad: </p>
                     <div id="sel_dispo"></div>
-                    <input type="text" placeholder="Precio por hora" id="id_precio"/><br>
+                    <input type="text" placeholder="Precio por hora" id="id_precio" required/><br>
                 </div>
                 <button value="Publicar" onclick="publicar()">PUBLICAR</button>
             </article>
             <article class="lista_trabajos">
-                <p>TRABAJOS PENDIENTES</p>
+                <h2>TRABAJOS PENDIENTES</h2>
                 <div id="tabla_trabajos">
-                    <table></table>
                 </div>
             </article>
         </section>

@@ -1,4 +1,9 @@
-
+/**
+ * Clase abstracta Usuario
+ * Superclase de Trabajador, Cliente y Administrador
+ * @author cosmetorandell
+ *
+ */
 public abstract class Usuario {
 	//Aributos
 	private String nombre;
@@ -46,7 +51,15 @@ public abstract class Usuario {
 		this.dni = dni;
 	}
 	
-	//Constructor completo
+	/**
+	 * Constructor completo
+	 * @param nombre
+	 * @param apellido
+	 * @param telefono
+	 * @param correo
+	 * @param contrasena
+	 * @param dni
+	 */
 	public Usuario(String nombre, String apellido, Integer telefono, String correo, String contrasena, String dni) {
 		this.setNombre(nombre);
 		this.setApellido(apellido);
@@ -55,7 +68,9 @@ public abstract class Usuario {
 		this.setContrasena(contrasena);
 		this.setDni(dni);
 	}
-	//Constructor vacio
+	/**
+	 * Constructor vacio
+	 */
 	public Usuario() {
 		this(null,null,null,null,null,null);
 	}

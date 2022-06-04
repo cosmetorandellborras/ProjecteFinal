@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,70 +8,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
+
 <body>
     <nav>
         <img src="p.jpg">
-        <button class="boton_reg" value="Registrar"><a href="registroCli.html">Registrate</a></button>
-        <section class="forms_usu">
-            <legend>ACCESO CLIENTES</legend>
+        <button class="boton_reg" value="Registrar"><a href="registroCli.html">REGISTRATE</a></button>
+        <!-- Formularios login usuario -->
 
-            <input type="text" placeholder="Usuario" id="id_cliente"/>
-
-            <input type="password" placeholder="Contraseña" id="passw_cliente"/>
-
-            <button value="Enviar" onclick="enviarCli()">Enviar</button>
-        </section>
-
-        <section class="forms_usu">
+        <section class="acc_col">
             <legend>ACCESO COLABORADORES</legend>
 
-            <input type="text" placeholder="Usuario" id="id_colaborador"/>
+            <input type="text" placeholder="Usuario" id="id_colaborador" />
 
-            <input type="password" placeholder="Contraseña" id="passw_colaborador"/>
+            <input type="password" placeholder="Contraseña" id="passw_colaborador" />
 
             <button value="Enviar" onclick="enviarTrab()">Enviar</button>
 
         </section>
+        <section class="acc_cli">
+            <legend>ACCESO CLIENTES</legend>
+
+            <input type="text" placeholder="Usuario" id="id_cliente" />
+
+            <input type="password" placeholder="Contraseña" id="passw_cliente" />
+
+            <button value="Enviar" onclick="enviarCli()">Enviar</button>
+        </section>
     </nav>
 
     <section class="imagen1">
-        <img src="img1.jpg">
+        <img src="img.png">
     </section>
 
     <section class="contenedor_sec">
         <section>
             <p>Gestión Rápida y Fácil</p>
-        </section> 
+        </section>
         <section>
             <p>Confianza y Seguridad</p>
-        </section> 
+        </section>
         <section>
             <p>Flexibilidad</p>
-        </section> 
+        </section>
     </section>
 
     <footer>
         <section class="sec_foot">
             <section>
                 <p>¿Quieres trabajar con nosotros?</p>
-                <button class="boton_reg" type="submit" value="Registrar"><a href="registroTrab.html">Registrate</a></button>
-            </section> 
+                <button class="boton_reg" type="submit" value="Registrar"><a
+                        href="registroTrab.html">Registrate</a></button>
+            </section>
             <section>
                 <p>Contáctanos</p>
                 <img src="w.png">
-            </section> 
+            </section>
+            <!--Formulario login administrador-->
             <article class="form_admin">
                 <legend>ÁREA PRIVADA</legend>
-    
-                <input type="text" placeholder="Usuario" id="user"/><br>
-    
-                <input type="password" placeholder="Contraseña" id="passw"/>
-    
+
+                <input type="text" placeholder="Usuario" id="user" /><br>
+
+                <input type="password" placeholder="Contraseña" id="passw" />
+
                 <button value="Enviar" onclick="">Enviar</button>
             </article>
         </section>
     </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script src="home.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="home.js"></script>
 </body>
+
 </html>

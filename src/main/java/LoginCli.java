@@ -14,7 +14,9 @@ public class LoginCli extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet LoginCli
+	 * Recibe los datos para llamar al método comprobarLoginCliente
+	 * Envia un numero que indica si la operación se ha llevado a cabo con étixo o no
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String dni = new String();

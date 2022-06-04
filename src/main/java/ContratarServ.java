@@ -19,12 +19,13 @@ public class ContratarServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet ContratarServ
+	 * Recibe los datos del servicio a contratar y llama al método contServ
+	 * Envia como respuesta un numero que identificará si la operación se ha completado satisfactoriamente o no
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String dnicliente = request.getParameter("dnicliente");
 			String anuncio = request.getParameter("anuncio");
-			//int anuncio = Integer.parseInt(request.getParameter("anuncio"));
 			String direccion = request.getParameter("direccion");
 			
 			DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -32,19 +33,9 @@ public class ContratarServ extends HttpServlet {
 			LocalDate fechaInicio = LocalDate.parse(request.getParameter("fechainicio"),formateador);
 			LocalDate fechaFin = LocalDate.parse(request.getParameter("fechafin"),formateador);
 			
-			//String fechaInicio = request.getParameter("fechainicio");
-			//String fechaFin = request.getParameter("fechafin");
-			
 			String horaInicio = request.getParameter("horainicio");
 			String horaFin = request.getParameter("horafin");
 
-			System.out.println(dnicliente);
-			System.out.println(anuncio);
-			System.out.println(direccion);
-			System.out.println(fechaInicio);
-			System.out.println(fechaFin);
-			System.out.println(horaInicio);
-			System.out.println(horaFin);
 			
 			int num = MyTask.contServicio(dnicliente, anuncio, direccion, fechaInicio, fechaFin, horaInicio, horaFin);
 			response.addHeader("Access-Control-Allow-Origin","*");

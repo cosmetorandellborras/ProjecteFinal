@@ -2,7 +2,8 @@ function actualitzar(){
     listaTipoTrabajo();
     listaZona();
     listaDisponibilidad();
-    mostrarDatosCliente()
+    mostrarDatosCliente();
+    mostrarServicios();
 }
 function listaTipoTrabajo(){
     var http;
@@ -79,13 +80,8 @@ function solicitar(num){
     var h2 = prompt('Introduce la hora de fin (00-24): ');
     var dir = prompt('Introduce la dirección del domicilio: ');
     var timeDiff = Math.abs(d2.getTime() - d1.getTime());
-    alert(timeDiff);
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24))+1;
-    alert(diffDays);
     var horas = (h2-h1)*diffDays;
-    alert("Horas totales "+horas);
-    alert("Numero anuncio "+num);
-    alert("Identificador cliente: "+sessionStorage.getItem("identificador"));
 
     http.open("POST","http://localhost:7070/ProjecteFinal/ContratarServ",true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -104,7 +100,6 @@ function mostrarDatosCliente(){
 
     http.onreadystatechange = function (){
         if (http.readyState == 4 && http.status == 200){
-            alert(http.responseText);
             var obj = JSON.parse(http.responseText);
             document.getElementById("id_nombre").value = obj.nombre;
             document.getElementById("id_apellido").value = obj.apellido;
@@ -140,4 +135,49 @@ function actualizarDatos(){
 function encPass(pass){
     let encrypted = CryptoJS.SHA256(pass);
     return encrypted;
+}
+function mostrarServicios(){
+    var http;
+    http = new XMLHttpRequest;
+
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            document.getElementById("tabla_trabajos_solicitados").innerHTML = http.responseText;
+        }
+    }
+
+    http.open("POST", "http://localhost:7070/ProjecteFinal/MostrarServicioCli", true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    http.send("id="+sessionStorage.getItem("identificador"));
+}
+function valorarServ(id){
+    var valoracion;
+    let correcto = false;
+    while (!correcto) {
+        valoracion = Number(prompt("¿Cómo valorarías este servicio de 0 a 5? (sin decimales)"));
+        if(Number.isInteger(valoracion) && valoracion >= 0 && valoracion <= 5){
+            correcto = true;
+        } else{
+            alert("Debe ser un número entero entre 0 y 5");
+        }
+    }
+    var comentario = prompt("Añade un comentario (opcional)");
+    var http = new XMLHttpRequest;
+
+    http.onreadystatechange = function(){
+        if(http.readyState == 4 && http.status == 200){
+            var num = parseInt(http.responseText);
+            if (num == 1){
+                alert("Se ha insertado la valoración correctamente");
+            }
+            else {
+                alert("Hubo algún problema");
+            }
+            actualitzar();
+        }
+    }
+
+    http.open("POST", "http://localhost:7070/ProjecteFinal/ValorarServ", true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    http.send("id="+id+"&&valoracion="+valoracion+"&&comentario="+comentario);
 }

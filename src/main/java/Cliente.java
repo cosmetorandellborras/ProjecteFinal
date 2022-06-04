@@ -1,25 +1,37 @@
 import java.util.Date;
-
+/**
+ * Clase Cliente
+ * Subclase de Usuario
+ * @author cosmetorandell
+ *
+ */
 
 public class Cliente extends Usuario{
-	//Constructores
+	/**
+	 * Constructor vacio
+	 */
 	public Cliente() {
 		super();
 		
 	}
-
+	/**
+	 * Constructor completo
+	 * @param nombre
+	 * @param apellido
+	 * @param telefono
+	 * @param correo
+	 * @param contrasena
+	 * @param dni
+	 */
 	public Cliente(String nombre, String apellido, Integer telefono, String correo, String contrasena, String dni) {
 		super(nombre, apellido, telefono, correo, contrasena, dni);
 		
 	}
-	//Metodos
-	public static void solicitarServicio(Anuncio anuncio, String direccion, Date fecha_inicio, Date fecha_fin, String intervalo_horas) {
-		
-	}
-
-	public static void valorarServicio(Contratacion contratacion, int valoracion, String comentario) {
-		
-	}
+	/**
+	 * Método registarUsuario
+	 * Llama al método comprobarAltaUsuario, verifica que no esta dado de alta y si no lo esta, llama al método insertarUsuario y inserta los datos del cliente
+	 * @return num retorna un numero que identificará si la operación se ha completado satisfactoriamente o no
+	 */
 	@Override
 	public int registrarUsuario() {
 		int num = -1;
@@ -30,11 +42,19 @@ public class Cliente extends Usuario{
 		}
 		return num;
 	}
-
+	/**
+	 * Método mostrarDatos
+	 * Llama al metodo mostrarDatosCliente
+	 */
 	@Override
 	public void mostrarDatos() {
 		DataBase.mostrarDatosCliente(this);
 	}
+	/**
+	 * Método actualizarDatos
+	 * Llama al método actualizarDatosUsuario
+	 * @return num retorna un numero que identificará si la operación se ha completado satisfactoriamente o no
+	 */
 	public int actualizarDatos() {
 		int num = DataBase.actualizarDatosUsuario(this);
 		return num;

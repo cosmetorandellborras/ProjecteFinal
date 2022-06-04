@@ -14,7 +14,9 @@ public class GetDatosCli extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet GetDatosCli
+	 * Recibe el dni del cliente y llama al método getDatosCliente
+	 * Envia un string en formato JSON con los datos del cliente
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String dni = request.getParameter("dni");

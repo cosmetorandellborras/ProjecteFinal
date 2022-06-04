@@ -14,7 +14,9 @@ public class RegistroTrab extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet RegistroTrab
+	 * Recibe los datos del trabajador y llama al método regTrabajador
+	 * Envia un numero para verificar que la operación se ha llevado a cabo de manera satisfactoria
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombre = new String();

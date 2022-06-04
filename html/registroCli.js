@@ -2,7 +2,6 @@ function enviar(){
     var http;
     http = new XMLHttpRequest;
     let passenc = encPass(document.getElementById("contraseña").value);
-    alert(passenc);
 
     http.onreadystatechange = function (){
         if (http.readyState == 4 && http.status == 200){

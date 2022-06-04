@@ -1,4 +1,9 @@
-
+/**
+ * Clase Trabajador
+ * Subclase de Usuario
+ * @author cosmetorandell
+ *
+ */
 public class Trabajador extends Usuario{
 	//Atributo
 	private Integer edad;
@@ -11,18 +16,35 @@ public class Trabajador extends Usuario{
 	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
-	//Constructores
+	/**
+	 * Constructor vacio
+	 */
 	public Trabajador() {
 		super();
 		
 	}
-
+	/**
+	 * Constructor completo
+	 * @param nombre
+	 * @param apellido
+	 * @param telefono
+	 * @param correo
+	 * @param contrasena
+	 * @param dni
+	 * @param edad
+	 */
 	public Trabajador(String nombre, String apellido, Integer telefono, String correo, String contrasena, String dni,
 			Integer edad) {
 		super(nombre, apellido, telefono, correo, contrasena, dni);
 		this.setEdad(edad);
 	}
 	//Metodos
+	/**
+	 * Método registrarUsuario
+	 * Llama al método comprobarAltaUsuario para comprobar si ya esta dado de alta el trabajador y en caso de que no lo este
+	 * llama al método insertarUsuario que inserta el nuevo trabajador en la base de datos
+	 * @return num retorna un numero para verificar que la operación se ha llevado a cabo de manera satisfactoria
+	 */
 	@Override
 	public int registrarUsuario() {
 		int num = -1;
@@ -37,26 +59,15 @@ public class Trabajador extends Usuario{
 	public void mostrarDatos() {
 		
 	}
+	/**
+	 * Método actualizarDatos
+	 * Llama al método actualizarDatosUsuario y actualiza los datos del trabajador
+	 * @return num retorna un numero para verificar que la operación se ha llevado a cabo de manera satisfactoria
+	 */
 	public int actualizarDatos() {
 		int num = DataBase.actualizarDatosUsuario(this);
 		return num;
 	}
 
-	public void publicarAnuncio(String[] zona, String trabajo, String disponibilidad, Float precio_hora) {
-		
-	}
-
-	public String listarSolicitudes() {
-		String texto = new String();
-		return texto;
-	}
-
-	public void aceptarServicio(Contratacion contratacion) {
-		
-	}
-
-	
-	
-	
 	
 }

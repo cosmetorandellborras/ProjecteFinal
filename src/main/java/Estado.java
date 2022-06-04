@@ -1,4 +1,8 @@
-
+/**
+ * Enumeración Estado
+ * @author cosmetorandell
+ *
+ */
 public enum Estado {
-	pendiente, rechazado, aceptado, anulado
+	pendiente, rechazado, aceptado
 }

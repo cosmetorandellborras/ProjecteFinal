@@ -1,7 +1,12 @@
 import java.time.LocalDate;
-
+/**
+ * Clase Contratacion
+ * @author cosmetorandell
+ *
+ */
 public class Contratacion {
 	//Atributos
+	private Integer id;
 	private String dniCliente;
 	private Anuncio anuncio;
 	private String direccion;
@@ -14,6 +19,13 @@ public class Contratacion {
 	private Estado estado;
 	private float precio;
 	//Getters y setters
+	public Integer getId() {
+		return id;
+	}
+	public void setId() {
+		int num = DataBase.buscarUltimoIdContrato();
+		this.id = num+1;
+	}
 	public String getDniCliente() {
 		return dniCliente;
 	}
@@ -80,9 +92,21 @@ public class Contratacion {
 	public float getValoracion() {
 		return valoracion;
 	}
-	//Constructor
+	/**
+	 * Constructor completo
+	 * @param dniCliente
+	 * @param anuncio
+	 * @param direccion
+	 * @param fechaInicio
+	 * @param fechaFin
+	 * @param intervaloHoras
+	 * @param fechaContrato
+	 * @param estado
+	 * @param precio
+	 */
 	public Contratacion(String dniCliente, Anuncio anuncio, String direccion, LocalDate fechaInicio, LocalDate fechaFin,
 			String intervaloHoras, LocalDate fechaContrato, Estado estado, float precio) {
+		this.setId();
 		this.setDniCliente(dniCliente);
 		this.setAnuncio(anuncio);
 		this.setDireccion(direccion);
@@ -95,7 +119,11 @@ public class Contratacion {
 		this.setEstado(estado);
 		this.setPrecio(precio);
 	}
-	//Métodos
+	/**
+	 * Método inContrato
+	 * Llama al metodo insertarContratación e inserta los valores de la contratación en la base de datos
+	 * @return num retorna un numero que identificará si la operación se ha completado satisfactoriamente o no
+	 */
 	public int inContrato() {
 		int num = DataBase.insertarContratacion(this);
 		return num;

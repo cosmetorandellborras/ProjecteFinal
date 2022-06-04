@@ -1,81 +1,170 @@
+@media screen and (min-width: 800px) {
+    body {
+        margin: 0;
+    }
 
-body{
-    margin:0;
+    header {
+        display: flex;
+        justify-content: center;
+    }
+
+    img {
+        height: 250px;
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .sec_datos {
+        display: flex;
+        margin-top: 15px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 40px;
+        background-color: #17747a;
+        height: 1050px;
+        width: 100%;
+    }
+
+    legend {
+        font-size: 45px;
+        color: white;
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=number],
+    input[type=tel] {
+        margin-top: 19px;
+        font-size: 25px;
+        height: 45px;
+        width: 290px;
+    }
+
+
+
+    button {
+        margin-top: 10px;
+        color: white;
+        text-align: center;
+        font-size: 25px;
+        height: 55px;
+        width: 180px;
+        background-color: #03545c;
+    }
+
+    button:hover {
+        background-color: #013135;
+        transition-duration: 0.3s;
+    }
+
+
+
+
+    .sec_foot {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        font-size: 35px;
+        text-align: center;
+        height: 240px;
+        width: 100%;
+    }
+
+    .sec_foot img {
+        height: 110px;
+        width: 110px;
+    }
 }
 
-header{
-    display: flex;
-    justify-content: center;
-}
+@media screen and (max-width: 800px) {
 
-img{
-    height: 250px;
-    width: 610px;
-}
+    body {
+        margin: 0;
+    }
 
-a{
-    text-decoration:none;;
-    color: white;
-}
+    header {
+        display: flex;
+        justify-content: center;
+    }
 
-.sec_datos{
-    display: flex;
-    margin-top: 20px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 40px;
-    background-color: #17747a;
-    height: 700px;
-    width: 100%;
-}
+    img {
+        height: 170px;
+        width: 100%;
+    }
 
-legend{
-    font-size: 45px;
-    color:white;
-}
+    a {
+        text-decoration: none;
+        color: white;
+    }
 
-input[type=text],
-input[type=password],
-input[type=email],
-input[type=number],
-input[type=tel]  {
-    margin-top: 19px;
-    font-size: 25px;
-    height: 45px;   
-    width: 290px;   
-}
+    .sec_datos {
+        display: flex;
+        margin-top: 15px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 40px;
+        background-color: #17747a;
+        height: 1050px;
+        width: 100%;
+    }
 
+    legend {
+        color: white;
+        text-align: center;
+        font-size: 0.9em;
+    }
 
-
-button{
-    margin-top: 27px;
-    color:white;
-    text-align: center;
-    font-size: 25px;
-    height: 55px;
-    width: 180px;
-    background-color: #08a0ad;
-}
-button:hover{
-    background-color: #00444a;
-    transition-duration:0.3s;
-}
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=number],
+    input[type=tel] {
+        margin-top: 19px;
+        font-size: 25px;
+        height: 45px;
+        width: 290px;
+    }
 
 
 
+    button {
+        margin-top: 10px;
+        color: white;
+        text-align: center;
+        font-size: 25px;
+        height: 55px;
+        width: 180px;
+        background-color: #03545c;
+    }
 
-.sec_foot{
-    display: flex;
-    justify-content:center;
-    margin-top: 40px;
-    font-size: 35px;
-    text-align: center;
-    height: 240px;
-    width:100%;
-}
+    button:hover {
+        background-color: #013135;
+        transition-duration: 0.3s;
+    }
 
-.sec_foot img{
-    height: 110px;
-    width: 110px;
+
+
+
+    .sec_foot {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        font-size: 35px;
+        text-align: center;
+        height: 240px;
+        width: 100%;
+    }
+
+    .sec_foot img {
+        height: 110px;
+        width: 110px;
+    }
+
 }

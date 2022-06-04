@@ -14,7 +14,9 @@ public class FiltrarAnuncios extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet FiltrarAnuncios
+	 * Recibe los parámetros para filtrar un anuncio y llama al método filtrarAnuncio
+	 * Envia como respuesta un string con una tabla con todos los servicios
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String trabajo = new String();

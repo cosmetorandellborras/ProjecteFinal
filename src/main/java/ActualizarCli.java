@@ -14,7 +14,9 @@ public class ActualizarCli extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet ActualizarCli
+	 * Recibe todos los datos de cliente y llama al método modificarDatosCliente
+	 * Envia como respuesta un numero que identificará si la operación se ha completado satisfactoriamente o no
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombre = request.getParameter("nombre");

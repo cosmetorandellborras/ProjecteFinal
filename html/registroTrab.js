@@ -5,7 +5,6 @@ function enviar(){
 
     http.onreadystatechange = function (){
         if (http.readyState == 4 && http.status == 200){
-            console.log(http.responseText);
             var stat = parseInt(http.responseText);
             if (stat == 0){
                 alert("Se ha registrado correctamente");

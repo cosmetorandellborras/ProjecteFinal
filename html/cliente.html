@@ -10,13 +10,13 @@
 <body onload="actualitzar()">
     <header>
         <a href="home.html"><img src="p.jpg"></a>
+        <h1>ÁREA CLIENTES</h1>
     </header>
 
-    <h1>ÁREA CLIENTES</h1>
 
     <section class="sec_datos">
         <section class="mod_datos">
-            <legend>MODIFICAR DATOS</legend>
+            <h2>MODIFICAR DATOS</h2>
             <input type="text" placeholder="Nombre" id="id_nombre"/><br>
 
             <input type="text" placeholder="Apellido" id="id_apellido"/><br>
@@ -32,9 +32,9 @@
 
         <section class="datos_anuncio">
             <article class="fil_anun">
-                <legend>FILTRAR ANUNCIO</legend>
+                <h2>FILTRAR ANUNCIO</h2>
                 <div class="fil_anun2">
-                    <p>Trabajo: </p> 
+                    <p>Trabajo: </p>
                     <div id="sel_trabajo"></div>
                     <p>Zona: </p>   
                     <div id="sel_zona"></div>
@@ -42,10 +42,12 @@
                     <div id="sel_dispo"></div>
                 </div>
                 <button value="Filtrar" onclick="filtrar()">FILTRAR</button>
+                <div id="tabla_trabajos">
+                </div>
             </article>
             <article class="lista_trabajos">
-                <p></p>
-                <div id="tabla_trabajos">
+                <h2>TRABAJOS SOLICITADOS</h2>
+                <div id="tabla_trabajos_solicitados">
                 </div>
             </article>
         </section>

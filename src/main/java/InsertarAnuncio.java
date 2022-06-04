@@ -14,7 +14,9 @@ public class InsertarAnuncio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Servlet InsertarAnuncio
+	 * Recibe todos los datos del nuevo anuncio, adapta los datos para evitar posibles errores y llama al método regAnuncio
+	 * Envia un numero que indica si la operación se ha llevado a cabo con étixo o no
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String trabajo = new String();
