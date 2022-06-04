@@ -51,7 +51,7 @@ Reparto del trabajo :
 3. Añadido archivo base de datos
 4. Añadido metodo publicar anuncio
 5. Correción enumeraciones clase base de datos
-6. Merge con ramas
+6. Merge de ramas
 
 ### Database 
 1. Update DataBase.java
