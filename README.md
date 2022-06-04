@@ -71,32 +71,32 @@ Reparto del trabajo :
 ### Master
 v1.0.0 : Versión inicial del proyecto
 
-v1.1.0 : Añadidas todas las clases
+v2.0.0 : Añadidas todas las clases
 
-v1.2.0 : Añadido archivo base de datos
+v2.0.1 : Añadido archivo base de datos
 
-v1.3.0 : Añadido metodo publicar anuncio
+v2.0.2 : Añadido metodo publicar anuncio
 
-v1.4.0 : Correción enumeraciones clase base de datos
+v2.0.3 : Correción enumeraciones clase base de datos
 
-v4.0.0 : Merge con ramas
+v3.0.0 : Merge con ramas
 
 
 ### Database 
-v2.0.0 : Update DataBase.java
+v2.1.0 : Update DataBase.java
 
-v2.1.0 : Creación mostrar servicio
+v2.1.1 : Creación mostrar servicio
 
-v2.2.0 : Creación mostrar servicio II
+v2.1.2 : Creación mostrar servicio II
 
-v2.3.0 : Añadido mostrar y actualizar servicio
+v2.1.3 : Añadido mostrar y actualizar servicio
 
 ### Html 
-v3.0.0 : Creación página de inicio
+v2.2.0 : Creación página de inicio
 
-v3.1.0 : Creación página y regsitro trabajador
+v2.2.1 : Creación página y regsitro trabajador
 
-v3.2.0 : Creación página y registro cliente
+v2.2.2 : Creación página y registro cliente
 
 
 ## Diagrama de ramas 
