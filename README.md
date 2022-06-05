@@ -43,6 +43,11 @@ Reparto del trabajo :
 * HTML y CSS : Juan Sánchez
 * JavaScript : Carlos Blanco y Cosme Torandell
 
+
+## Diagrama de ramas 
+![ramas(1)](https://user-images.githubusercontent.com/91699247/170724049-6a9551ea-a4b4-454e-a024-d866c6215975.jpg)
+
+
 ## Historial de Commits
 
 ### Master
@@ -101,10 +106,6 @@ v4.0.0 : Creación página de inicio
 v4.1.0 : Creación página y regsitro trabajador
 
 v4.2.0 : Creación página y registro cliente
-
-
-## Diagrama de ramas 
-![ramas(1)](https://user-images.githubusercontent.com/91699247/170724049-6a9551ea-a4b4-454e-a024-d866c6215975.jpg)
 
 
 
