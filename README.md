@@ -79,7 +79,11 @@ v2.0.2 : Añadido metodo publicar anuncio
 
 v2.0.3 : Correción enumeraciones clase base de datos
 
+v2.0.4 : Modificar datos cliente y trabajador agregado
+
 v3.0.0 : Merge con ramas
+
+4.0.0 : Versión final del proyecto
 
 
 ### Database 
