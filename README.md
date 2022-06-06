@@ -52,23 +52,38 @@ Reparto del trabajo :
 
 ### Master
 1. Versión inicial del proyecto
+
 2. Añadidas todas las clases
+
 3. Añadido archivo base de datos
+
 4. Añadido metodo publicar anuncio
+
 5. Correción enumeraciones clase base de datos
-6. Merge de ramas
+
+6. Modificar datos cliente y trabajador agregado
+
+7. Merge con ramas
+
+8. Versión final del proyecto
+
 
 ### Database 
 1. Update DataBase.java
-2. Creación mostrar servicio
-3. Creación mostrar servicio II
-4. Añadido mostrar y actualizar servicio
 
+2. Creación mostrar servicio
+
+3. Creación mostrar servicio II
+
+4. Añadido mostrar y actualizar servicio
 
 ### Html 
 1. Creación página de inicio
+
 2. Creación página y regsitro trabajador
+
 3. Creación página y registro cliente
+
 
 
 ## Control de Versiones 
